@@ -27,7 +27,7 @@
 ## Git Command
 ```bash
 $ # clone은 프로젝트를 컴퓨터로 받아옵니다. 최초에만 실행합니다.
-$ git clone git@gitlab.com:vaporize93/2016_db_project.git
+$ git clone https://gitlab.com/vaporize93/2016_db_project.git
 $ git checkout <team_branch>
 $ # 이후에는 pull로 해당 프로젝트를 당겨옵니다.
 $ git pull
