@@ -1,4 +1,4 @@
-# 데이터베이스 프로젝트
+﻿# 데이터베이스 프로젝트
 ## 주제
 성공회대학교 동문회 프로그램 개발
 
@@ -31,6 +31,8 @@ $ git clone https://gitlab.com/vaporize93/2016_db_project.git
 $ git checkout <team_branch>
 $ # 이후에는 pull로 해당 프로젝트를 당겨옵니다.
 $ git pull
+$ # dev로부터 작업내용을 가져옵니다.
+$ git merge dev
 $ # 개발을 진행합니다.
 $ git add -p
 $ git commit -v
