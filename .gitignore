@@ -1,5 +1,9 @@
-# IDE
+# pycharm IDE
 .idea
 
 # python
+__pycache__
 *.pyc
+
+#database
+my.cnf
