@@ -1,17 +1,21 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>SKHU 동문 목록</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block title %}SKHU 동문 목록{% endblock %}
+
+{% load staticfiles %}
+{% block content %}
 <div id="content">
     <h1>동문 명단</h1>
     <ul>
         {% for user in object_list %}
-            <a href="{% url 'alumni:detail' user.id %}">
+            <a href="#">
             <div class="user-box" >
                 <div class="user-picture">
+                {% if user.open_picture == 'False' %}
                     <img src="{{ user.picture }}" />
+                {% else %}
+                    <img src="{% static "/images/etc/unknown.png" %}" />
+                {% endif %}
                 </div>
                 <div class="user-info">
                     <li> {{ user }}</li>
@@ -24,5 +28,4 @@
         {% endfor %}
     </ul>
 </div>
-</body>
-</html>
+{% endblock %}

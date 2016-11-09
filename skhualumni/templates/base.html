@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}SKHU 동문회 사이트{% endblock %}</title>
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="#"/>
+<link rel="stylesheet" type="text/css" href="{% block extrastyle  %}{% endblock %}"/>
+
+</head>
+<body>
+<div id="header">
+    <h2 class="maintitile">성공회대학교 인문학습원</h2>
+<div id="menu">
+    <li><a href="#">기관 소개</a></li>
+    <li><a href="#">열림마당</a></li>
+    <li><a href="{% url 'alumni:index' %}">동문회</a></li>
+    <li><a href="#">기타서비스</a></li>
+    <li><a href="#">Admin</a></li>
+</div>
+{% block content %}{% endblock %}
+{% block footer %}{% endblock %}
+
+</body>
+</html>
