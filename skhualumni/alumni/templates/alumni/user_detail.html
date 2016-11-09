@@ -5,15 +5,20 @@
 </head>
 <body>
 <div id="content">
-    <h1>{{ object.name }}</h1>
-
-    <ul>
-        <li>{{ object.login_id }}</li>
-        <li>{{ object.period }}</li>
-        <li>{{ object.name }}</li>
+    <div class="user-picture-detail">
+        <img src="{{ object.picture }}" />
+    </div>
+    <div class="user-info-detail">
+        <li>{{ object }}</li>
+        <li>{{ object.period }}기</li>
         <li>{{ object.email }}</li>
-    </ul>
-</div>
+        <li>{{ object.login_id }}</li>
+        <li>{{ object.position }}</li>
+        <li>{{ object.position_all }}</li>
+        <li>{{ object.work }}</li>
+        <li>{{ object.work_phone }}</li>
+        <li>{{ object.work_position }}</li>
+    </div>
 </div>
 </body>
 </html>
