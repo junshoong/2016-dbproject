@@ -20,4 +20,5 @@ from board import views
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', views.index),
+    url(r'^alumni/', include('alumni.urls', namespace='alumni')),
 ]

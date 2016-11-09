@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>SKHU 동문 목록</title>
+</head>
+<body>
+<div id="content">
+    <h1>동문 목록</h1>
+    <ul>
+        {% for user in object_list %}
+            <li><a href="{% url 'alumni:detail' user.id %}"> {{ user }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+</body>
+</html>
