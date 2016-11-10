@@ -1,13 +1,11 @@
 from django.conf.urls import url
-from info import views
+from info.views import *
 
 urlpatterns = [
-    url(r'^$', views.greet, name='home'),
-    url(r'^greeting/$', views.greet, name='greeting'),
-    # url(r'^$', GreetingView.as_view(), name='home'),
-    # url(r'^greeting/$', GreetingView.as_view(), name='greeting'),
-    # url(r'^business/$', BusinessView.as_view(), name='business'),
-    # url(r'^organization/$', OrganizationView.as_view(), name='organization'),
-    # url(r'^map/$', MapView.as_view(), name='map'),
-    # url(r'^usage/$', UsageView.as_view(), name='usage'),
+    url(r'^$', render_greeting, name='index'),
+    url(r'^greeting/$', render_greeting, name='greeting'),
+    url(r'^business/$', render_business, name='business'),
+    url(r'^organization/$', render_organization, name='organization'),
+    url(r'^map/$', render_map, name='map'),
+    url(r'^usage/$', render_usage, name='usage'),
 ]

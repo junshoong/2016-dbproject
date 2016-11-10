@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Post
-# Create your views here.
+
 
 def index(request):
     post_list = Post.objects.all()
@@ -16,5 +16,5 @@ def post_detail(request, pk):
     })
 
 
-def Post_new(request):
+def post_new(request):
     return render(request, 'alumni/post_form.html')
