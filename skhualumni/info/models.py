@@ -7,14 +7,23 @@ from django.db import models
 
 @python_2_unicode_compatible
 class Info(models.Model):
+    INFO_CATEGORY = (
+        ('GRT', '인사말'),
+        ('BSN', '사업안내'),
+        ('ORG', '조직안내'),
+        ('MAP', '오시는길'),
+        ('USE', '이용안내'),
+    )
+    category = models.CharField(max_length=3, choices=INFO_CATEGORY)
     title = models.CharField(max_length=45)
     contents = models.TextField()
     image = models.ImageField(blank=True, upload_to='info/%Y')
-    create_date = models.DateTimeField(auto_now_add=True)
+    modified_date = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name = 'info'
         db_table = 'other_board'
+        ordering = ('-modified_date',)
 
     def __str__(self):
         return self.title
