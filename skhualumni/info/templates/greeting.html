@@ -1,0 +1,8 @@
+{% for greet in greeting %}
+<h1>{{ greet.title }}<h2>
+<p>{{ greet.modified_date }}</p>
+<div>
+    <img src="{{ greet.image.url }}" />
+    <p>{{ greet.contents }}</p>
+</div>
+    {% endfor %}
