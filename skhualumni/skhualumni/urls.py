@@ -15,13 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from board import views
+from skhualumni.views import HomeView
 
 urlpatterns = [
+    url(r'^$', HomeView.as_view(), name='home'),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', views.index),    #글 목록
-    url(r'^(?P<pk>\d+)/$', views.post_detail),      #글 내용
-    url(r'^new/$', views.Post_new),     #새 포스팅 등록
+    url(r'^board/', include('board.urls', namespace='board')),
     url(r'^alumni/', include('alumni.urls', namespace='alumni')),
     url(r'^info/', include('info.urls', namespace='info')),
 ]

@@ -5,6 +5,7 @@
     <title>{% block title %}SKHU 동문회 사이트{% endblock %}</title>
 {% load staticfiles %}
 <link rel="stylesheet" type="text/css" href="/static/css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
 <link rel="stylesheet" type="text/css" href="{% block extrastyle  %}{% endblock %}"/>
 
 </head>
@@ -13,7 +14,7 @@
     <h2 class="maintitile">성공회대학교 인문학습원</h2>
 <div id="menu">
     <li><a href="{% url 'info:index' %}">기관 소개</a></li>
-    <li><a href="#">열림마당</a></li>
+    <li><a href="{% url 'board:index' %}#">열림마당</a></li>
     <li><a href="{% url 'alumni:index' %}">동문회</a></li>
     <li><a href="#">기타서비스</a></li>
     <li><a href="#">Admin</a></li>
