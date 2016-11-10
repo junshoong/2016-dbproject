@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}사업소개{% endblock %}
+
+{% load staticfiles %}
+{% block content %}
+<div id="content">
+
+    {% for obj in business %}
+        <h1>{{ obj.title }}<h2>
+        <p>{{ odj.modified_date }}</p>
+        <div>
+            {% if obj.image %}
+            <img src="{{ obj.image.url }}" />
+            {% endif %}
+            <p>{{ obj.contents|linebreaks  }}</p>
+        </div>
+    {% endfor %}
+
+</div>
+{% endblock %}

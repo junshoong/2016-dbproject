@@ -1,0 +1,17 @@
+div#header {
+    width:1280px;
+    height:180px;
+    background-color:#80b195;
+}
+.maintitile {
+    width:360px;
+    height:180px;
+}
+
+div#menu {
+    width:1280px;
+    height:20px;
+    background-color:#dddddd;
+}
+
+
