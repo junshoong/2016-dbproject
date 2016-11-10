@@ -14,4 +14,8 @@ div#menu {
     background-color:#dddddd;
 }
 
+div#menu li {
+    display:inline-block;
+}
+
 
