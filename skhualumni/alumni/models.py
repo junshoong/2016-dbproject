@@ -32,7 +32,7 @@ class User(models.Model):
         verbose_name = 'user'
         verbose_name_plural = 'users'
         db_table = 'user'
-        ordering = ('id',)
+        ordering = ('-period',)
 
     def __str__(self):
         return self.name

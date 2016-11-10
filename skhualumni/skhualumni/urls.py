@@ -20,7 +20,7 @@ from board import views
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', views.index),    #글 목록
-    url(r'^(?P<pk>\d+)/$', views.post_detail),      #글 내용   
+    url(r'^(?P<pk>\d+)/$', views.post_detail),      #글 내용
     url(r'^new/$', views.Post_new),     #새 포스팅 등록
-
+    url(r'^alumni/', include('alumni.urls', namespace='alumni')),
 ]
