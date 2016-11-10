@@ -1,3 +1,10 @@
-from django.shortcuts import render
+from django.views.generic import ListView, DetailView
+from alumni.models import User
 
-# Create your views here.
+
+class UserLV(ListView):
+    model = User
+
+
+class UserDV(DetailView):
+    model = User
