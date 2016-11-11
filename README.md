@@ -86,6 +86,13 @@ $ ./manage.py migrate
 $ ./manage.py runserver
 ```
 
+### 기존 DB와 crash가 나는경우
+
+```bash
+$ ./manage.py migrate --fake <app_name> zero
+$ ./manage.py migrate
+```
+
 [프로젝트페이지](https://gitlab.com/vaporize93/2016_db_project)에 접속해서  상단의 `Merge Requests`를 클릭합니다. source에 <team_branch>를 설정하고 target에 dev를 설정합니다. 충분한 내용을 적어주고 submit 합니다.  
 
 이후에 모든 팀원이 확인이 되면 merge를 진행합니다.

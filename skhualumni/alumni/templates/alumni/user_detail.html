@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}동문 세부{% endblock %}
+
+{% load staticfiles %}
+{% block content %}
+<div id="content">
+<div id="content">
+    <div class="user-picture-detail">
+        <img src="{{ object.picture }}" />
+    </div>
+    <div class="user-info-detail">
+        <li>{{ object }}</li>
+        <li>{{ object.period }}기</li>
+        <li>{{ object.email }}</li>
+        <li>{{ object.login_id }}</li>
+        <li>{{ object.position }}</li>
+        <li>{{ object.position_all }}</li>
+        <li>{{ object.work }}</li>
+        <li>{{ object.work_phone }}</li>
+        <li>{{ object.work_position }}</li>
+    </div>
+</div>
+{% endblock %}
