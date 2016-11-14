@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'info.apps.InfoConfig',
 ]
 
+AUTH_USER_MODEL = "alumni.User"
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -110,6 +112,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
+
 
 # TIME_ZONE = 'UTC'
 TIME_ZONE = 'Asia/Seoul'
