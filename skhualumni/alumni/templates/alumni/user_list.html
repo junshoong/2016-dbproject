@@ -6,6 +6,9 @@
 {% block content %}
 <div id="content">
     <h1>동문 명단</h1>
+    <div id="user-search">
+        {% include "alumni/_user_search.html" %}
+    </div>
     <ul>
         {% for user in object_list %}
             <a href="#">
