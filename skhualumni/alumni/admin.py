@@ -3,7 +3,7 @@ from alumni.models import User
 
 
 class UserAdmin(admin.ModelAdmin):
-    list_display = ('login_id', 'name', 'email')
-    search_fields = ('login_id', 'name', 'email')
+    list_display = ('name', 'login_id')
 
 admin.site.register(User, UserAdmin)
+
