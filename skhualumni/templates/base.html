@@ -14,10 +14,16 @@
     <h2 class="maintitile">성공회대학교 인문학습원</h2>
 <div id="menu">
     <li><a href="{% url 'info:index' %}">기관 소개</a></li>
-    <li><a href="{% url 'board:index' %}#">열림마당</a></li>
+    <li><a href="{% url 'board:index' %}">열림마당</a></li>
     <li><a href="{% url 'alumni:index' %}">동문회</a></li>
     <li><a href="#">기타서비스</a></li>
-    <li><a href="#">Admin</a></li>
+    <li><a href="{% url 'admin:index' %}">Admin</a></li>
+    {% if user.is_active %}
+    <li><a href="{% url 'logout' %}">Logout</a></li>
+    {% else %}
+    <li><a href="{% url 'login' %}">Login</a></li>
+    {% endif %}
+
 </div>
 {% block content %}{% endblock %}
 {% block footer %}{% endblock %}

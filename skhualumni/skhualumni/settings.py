@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Added apps
     'alumni.apps.AlumniConfig',
     'board',
     'info.apps.InfoConfig',
@@ -111,7 +112,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ko-kr'
 
 
 # TIME_ZONE = 'UTC'
@@ -134,3 +135,9 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# for Auth
+
+LOGIN_URL = '/login/'
+LOGOUT = '/logout/'
+LOGIN_REDIRECT_URL = '/'
