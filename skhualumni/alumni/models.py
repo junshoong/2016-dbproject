@@ -39,7 +39,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     login_id = models.CharField('ID', max_length=11, unique=True)
     name = models.CharField('이름', max_length=10, blank=False)
     email = models.EmailField('Email', max_length=255, unique=True)
-    birth = models.DateField('생일')
+    birth = models.DateField('생일', null=True)
     period = models.IntegerField('기수', blank=True)
     position = models.CharField('동문회 직책', max_length=15, default="일반회원")
     position_all = models.CharField('총 동문회 직책', max_length=15, blank=True)
