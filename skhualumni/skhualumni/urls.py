@@ -18,13 +18,14 @@ from django.contrib import admin
 from django.conf.urls.static import static
 from django.contrib.auth.views import login, logout
 from django.conf import settings
-from skhualumni.views import HomeView
+from skhualumni.views import HomeView, UserUpdateView
 
 urlpatterns = [
     url(r'^$', HomeView.as_view(), name='home'),
     # django.contrib.auth.views
     url(r'^login/$', login, name='login'),
     url(r'^logout/$', logout, name='logout'),
+    url(r'^mypage/$', UserUpdateView.as_view(), name='mypage'),
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^board/', include('board.urls', namespace='board')),
