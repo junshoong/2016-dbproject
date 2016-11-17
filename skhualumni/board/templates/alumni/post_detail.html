@@ -1,20 +1,25 @@
-from board.views import *
+{% extends "base.html" %}
 
+{% block content %}
 <h1>{{ post.title }}</h1>
-{% if post.photo %}
-  <img src="{{ post.photo.url}}" />
-{% endif%}
+    {% if post.photo %}
+        <img src="{{ post.photo.url}}" />
+    {% endif%}
+<li></li>
+
 {{ post.content | linebreaksbr }}
 
 <h3>Comments</h3>
 
-<a href="{% url "board.views.comment_new" post.pk %}">댓글 작성</a>
+<a href="{% url "board:comment_new" post.pk %}">댓글 작성</a>
 
 {% for comment in post.comment_set.all %}
   <li>
       {{ comment.message }}
-      <small>by {{ comment.author }}, {{ comment.created_at }}</small>
-      <a href="{% url "board.views.comment_edit" post.pk comment.pk %}">수정</a>
-
+      <small>by {{ comment.author }}</small>
+      <small>{{ comment.created_at }}</small>
+      <a href="{% url "board:comment_edit" post.pk comment.pk %}">수정</a>
   </li>
 {% endfor %}
+{% endblock %}
+

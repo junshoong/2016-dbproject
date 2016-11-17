@@ -8,17 +8,16 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
-                <h1>hello django</h1>
+                <h1>Free Board Test...</h1>
 
-                <table class="table table-hover table-bordered">
-                    <tbody>
+                    <ol>
+                    <h3>제목</h3>
                     {% for post in post_list %}
-                        <tr>
-                            <td>{{ post.title }}</td>
-                        </tr>
+                        <li>
+                            <a href="{% url "board:post_detail" post.pk %}"><td>{{ post.title }}</td></a>
+                        </li>
                     {% endfor %}
-                    </tbody>
-                </table>
+                    </ol>
             </div>
         </div>
     </div>
