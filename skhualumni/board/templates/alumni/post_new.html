@@ -1,19 +1,30 @@
+{#{% extends "base.html" %}#}
+{##}
+{#{% block content %}#}
+{#    <form#}
+{#      method="POST" action="{% url 'board:post_new' %}" enctype="multipart/form-data"#}
+{#>#}
+{#    {% csrf_token %}#}
+{#    {{form.as_p}}#}
+{##}
+{#    <p>#}
+{#        <input type="submit" />#}
+{#    </p>#}
+{#</form>#}
+{##}
+{#{% endblock %}#}
+{##}
+
+
+
 {% extends "base.html" %}
 
 {% block content %}
-<form
-    method="POST"
+    <h1>New post</h1>
+    <form method="POST" class="post-form" enctype="multipart/form-data">
 
-    action="{% url 'board:post_new' %}"
-
-    enctype="multipart/form-data"
->
-    {% csrf_token %}
-    {{form.as_p}}
-
-    <p>
-        <input type="submit" />
-    </p>
-</form>
-
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
 {% endblock %}
