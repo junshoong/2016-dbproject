@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block title %}마이페이지{% endblock %}
+
+{% block content %}
+<div id="content">
+
+{#    <h1>마이페이지 {{ name }}</h1>#}
+
+    <form action="." method="POST">{% csrf_token %}
+    {% if form.errors %}
+        <p class="errornote">올바른 값을 입력해주세요!</p>
+    {% endif %}
+
+        <fieldset class="aligned">
+
+            <div class="form-row">
+                {{ object.login_id }}
+            </div>
+
+            <div class="form-row">
+                {{ object.name }}
+            </div>
+
+            <div class="form-row">
+                {{ object.period }}
+            </div>
+            <div class="form-row">
+                {{ form.picture.label_tag }} {{ form.picture }}
+            </div>
+            <div class="form-row">
+                {{ form.position.label_tag }} {{ form.position }}
+            </div>
+            <div class="form-row">
+                {{ form.email.label_tag }} {{ form.email }}
+            </div>
+            <div class="form-row">
+                {{ form.open_email.label_tag }} {{ form.open_email }}
+            </div>
+            <div class="form-row">
+                {{ form.work.label_tag }} {{ form.work }}
+            </div>
+            <div class="form-row">
+                {{ form.open_work.label_tag }} {{ form.open_work }}
+            </div>
+            <div class="form-row">
+                {{ form.work_position.label_tag }} {{ form.work_position }}
+            </div>
+            <div class="form-row">
+                {{ form.open_work_position.label_tag }} {{ form.open_work_position }}
+            </div>
+            <div class="form-row">
+                {{ form.work_phone.label_tag }} {{ form.work_phone }}
+            </div>
+            <div class="form-row">
+                {{ form.open_work_phone.label_tag }} {{ form.open_work_phone }}
+            </div>
+
+        </fieldset>
+
+        <div class="submit-row">
+            <input type="submit" value="수정" />
+{#            <input type="hidden" name="next" value="{{ next }}" />#}
+        </div>
+
+        <script type="text/javascript">
+            document.getElementById('id_name').focus();
+        </script>
+    </form>
+
+</div>
+{% endblock %}
