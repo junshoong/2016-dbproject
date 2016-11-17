@@ -70,7 +70,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def get_short_name(self):
         # The user is identified by their email address
-        return self.name
+        return  self.name
 
     def __str__(self):
         return self.name
