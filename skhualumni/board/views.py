@@ -47,18 +47,15 @@ def comment_edit(request, post_pk, pk):
         'form': form,
     })
 
-
-
+#새글 작성
 def post_new(request):
-    if request.method == "GET":
-        edit_form = PostEditForm()
-    elif request.method == "POST":
-         edit_form = PostEditForm(request.POST, request.FILES)
-         if edit_form.is_valid():
-            post_new = edit_form.save()
-            return redirect(post_new.get_absolute_url())
-
-    return render(request, 'alumni/post_new.html', {
-        'form': edit_form,
-    })
-
+    if request.method == "POST":
+        form = PostEditForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.save()
+            return redirect('board:post_detail', pk=post.pk)
+    else:
+        form = PostEditForm()
+    return render(request, 'alumni/post_new.html', {'form': form})
