@@ -2,32 +2,63 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}SKHU 동문회 사이트{% endblock %}</title>
-{% load staticfiles %}
-<link rel="stylesheet" type="text/css" href="/static/css/base.css"/>
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
-<link rel="stylesheet" type="text/css" href="{% block extrastyle  %}{% endblock %}"/>
+    {% load staticfiles %}
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="/static/css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="{% block extrastyle  %}{% endblock %}"/>
 
 </head>
 <body>
-<div id="header">
-    <h2 class="maintitile">성공회대학교 인문학습원</h2>
-<div id="menu">
-    <li><a href="{% url 'info:index' %}">기관 소개</a></li>
-    <li><a href="{% url 'board:index' %}">열림마당</a></li>
-    <li><a href="{% url 'alumni:index' %}">동문회</a></li>
-    <li><a href="#">기타서비스</a></li>
-    <li><a href="{% url 'admin:index' %}">Admin</a></li>
-    {% if user.is_active %}
-    <li><a href="{% url 'mypage' %}">마이페이지</a></li>
-    <li><a href="{% url 'logout' %}">Logout</a></li>
-    {% else %}
-    <li><a href="{% url 'login' %}">Login</a></li>
-    {% endif %}
-
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <a class="navbar-brand" href="#">성공회대학교 인문학습원<br></a>
+            </div>
+            <div class="col-md-6">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{% url 'info:index' %}">기관 소개</a></li>
+                    <li><a href="{% url 'board:index' %}">열림마당</a></li>
+                    <li><a href="{% url 'alumni:index' %}">동문회</a></li>
+                    <li><a href="#">기타서비스</a></li>
+                    <li><a href="{% url 'admin:index' %}">Admin</a></li>
+                    {% if user.is_active %}
+                    <li><a href="{% url 'mypage' %}">마이페이지</a></li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                    {% else %}
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
 {% block content %}{% endblock %}
-{% block footer %}{% endblock %}
+{% block footer %}
+<footer class="section section-primary">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <h1>성공회대학교</h1>
+                <p>(152-716) 서울특별시 구로구 연동로 320
+                    <br>Tel 02)2610-4808 &nbsp; &nbsp; &nbsp; Fax 02)2610-4737
+                    <br>Copyright(c) SUNGKONGHOE University. All Right Reserved.</p>
+            </div>
+            <div class="col-sm-6">
+                <div class="row">
+                    <a class="btn btn-primary">인문학습원</a>
+                    <a class="btn btn-primary">SKHU</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+{% endblock %}
 
 </body>
 </html>
