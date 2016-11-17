@@ -5,7 +5,7 @@
 {% block content %}
 <div id="content">
 
-{#    <h1>마이페이지 {{ name }}</h1>#}
+    <h1>마이페이지 - {{ object.name }}</h1>
 
     <form action="." method="POST">{% csrf_token %}
     {% if form.errors %}
@@ -15,15 +15,16 @@
         <fieldset class="aligned">
 
             <div class="form-row">
-                {{ object.login_id }}
+                ID(휴대전화) : {{ object.login_id }}
             </div>
-
             <div class="form-row">
-                {{ object.name }}
+                이름 : {{ object.name }}
             </div>
-
             <div class="form-row">
-                {{ object.period }}
+                기수 : {{ object.period }}
+            </div>
+            <div class="form-row">
+                새 비밀번호 입력 : {{ form.password }}
             </div>
             <div class="form-row">
                 {{ form.picture.label_tag }} {{ form.picture }}
@@ -60,7 +61,7 @@
 
         <div class="submit-row">
             <input type="submit" value="수정" />
-{#            <input type="hidden" name="next" value="{{ next }}" />#}
+            <input type="hidden" name="next" value="{{ next }}" />
         </div>
 
         <script type="text/javascript">
