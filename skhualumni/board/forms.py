@@ -6,3 +6,9 @@ class CommentForm(forms.ModelForm):
         model = Comment
         #fields = '__all__'
         fields = ('author', 'message')
+
+
+class PostEditForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = '__all__'
