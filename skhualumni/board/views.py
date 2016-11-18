@@ -5,12 +5,12 @@ from .models import Post, Comment
 from .forms import CommentForm, PostEditForm, PostSearchForm
 
 
-
 def index(request):
     post_list = Post.objects.all()
     return render(request, 'alumni/index.html', {
         'post_list': post_list,
     })
+
 
 # 글 검색
 class post_search(FormView):
@@ -18,14 +18,11 @@ class post_search(FormView):
     template_name = 'alumni/post_search.html'
 
     def form_valid(self, form):
-        sch__Word = '%s' % self.request.POST['search_word']
-        post_list = [Post.objects.filter(Q(title__icontains=sch__Word) |
-                                         Q(description__icontains=sch__Word) | Q(
-            content__icontains=sch__Word)).distinct]
-        # post_list = Post.objects.filter(Q(title__icontains=sch__Word) |
-        #                                 Q(description__icontains=sch__Word) | Q(content__icontains=sch__Word)).distinct()
-        context = {'form': form, 'search_term': sch__Word, 'object_list': post_list}
-        return render(self.request, self.template_name, context) #No Redirection
+        sch_word = '%s' % self.request.POST['search_word']
+        post_list = Post.objects.filter(Q(title__icontains=sch_word) |
+                                         Q(content__icontains=sch_word)).distinct
+        context = {'form': form, 'search_term': sch_word, 'object_list': post_list}
+        return render(self.request, self.template_name, context)  # No Redirection
 
 
 # 포스트 보기
@@ -80,6 +77,7 @@ def comment_new(request, pk):
     return render(request, 'alumni/post_form.html', {
         'form': form,
     })
+
 
 # 댓글 수정
 def comment_edit(request, post_pk, pk):
