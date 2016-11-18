@@ -7,7 +7,7 @@ from .forms import CommentForm, PostEditForm, PostSearchForm
 
 def index(request):
     post_list = Post.objects.all()
-    return render(request, 'alumni/index.html', {
+    return render(request, 'board/index.html', {
         'post_list': post_list,
     })
 
@@ -15,7 +15,7 @@ def index(request):
 # 글 검색
 class post_search(FormView):
     form_class = PostSearchForm
-    template_name = 'alumni/post_search.html'
+    template_name = 'board/post_search.html'
 
     def form_valid(self, form):
         sch_word = '%s' % self.request.POST['search_word']
@@ -28,7 +28,7 @@ class post_search(FormView):
 # 포스트 보기
 def post_detail(request, pk):
     post = Post.objects.get(pk=pk)
-    return render(request, 'alumni/post_detail.html', {
+    return render(request, 'board/post_detail.html', {
         'post': post,
     })
 
@@ -45,7 +45,7 @@ def post_edit(request, pk):
             return redirect('board:post_detail', pk=post.pk)
     else:
         form = PostEditForm(instance=post)
-    return render(request, 'alumni/post_new.html', {
+    return render(request, 'board/post_new.html', {
         'form': form})
 
 
@@ -60,7 +60,7 @@ def post_new(request):
             return redirect('board:post_detail', pk=post.pk)
     else:
         form = PostEditForm()
-    return render(request, 'alumni/post_new.html', {'form': form})
+    return render(request, 'board/post_new.html', {'form': form})
 
 
 # 댓글 생성
@@ -74,7 +74,7 @@ def comment_new(request, pk):
             return redirect('board:post_detail', pk)
     else:
         form = CommentForm()
-    return render(request, 'alumni/post_form.html', {
+    return render(request, 'board/post_form.html', {
         'form': form,
     })
 
@@ -91,6 +91,6 @@ def comment_edit(request, post_pk, pk):
             return redirect('board:post_detail', post_pk)
     else:
         form = CommentForm(instance=comment)
-    return render(request, 'alumni/post_form.html', {
+    return render(request, 'board/post_form.html', {
         'form': form,
     })
