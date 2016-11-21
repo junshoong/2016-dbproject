@@ -21,6 +21,7 @@ class UserUpdateView(LoginRequiredMixin, UpdateView):
 
     fields = [
         'picture',
+        'password',
         'email',
         'open_email',
         'position',
@@ -39,7 +40,10 @@ class UserUpdateView(LoginRequiredMixin, UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super(UserUpdateView, self).get_context_data(**kwargs)
-        context['login_id'] = self.get_object().login_id
-        context['name'] = self.get_object().name
-        context['period'] = self.get_object().period
         return context
+
+    def form_valid(self, form):
+        instance = form.save(commit=False)
+        instance.set_password(instance.password)
+        instance.save()
+        return super(UserUpdateView, self).form_valid(form)

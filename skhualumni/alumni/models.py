@@ -9,7 +9,7 @@ from django.contrib.auth.models import (
 
 
 class UserManager(BaseUserManager):
-    def create_user(self, login_id, name, period, password=None):
+    def create_user(self, login_id, name, period, email, password=None):
         if not login_id:
             raise ValueError('Users must have a login_id')
 
@@ -17,16 +17,18 @@ class UserManager(BaseUserManager):
             login_id=login_id,
             name=name,
             period=period,
+            email=UserManager.normalize_email(email),
         )
 
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, login_id, name, period, password):
+    def create_superuser(self, login_id, name, period, email, password):
         u = self.create_user(login_id=login_id,
                              name=name,
                              period=period,
+                             email=email,
                              password=password,
                              )
         u.is_admin = True
@@ -40,7 +42,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     name = models.CharField('이름', max_length=10, blank=False)
     email = models.EmailField('Email', max_length=255, unique=True)
     birth = models.DateField('생일', null=True)
-    period = models.IntegerField('기수', blank=True)
+    period = models.IntegerField('기수', blank=True, default=0)
     position = models.CharField('동문회 직책', max_length=15, default="일반회원")
     position_all = models.CharField('총 동문회 직책', max_length=15, blank=True)
     picture = models.ImageField('프로필 사진', blank=True)
@@ -62,7 +64,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     objects = UserManager()
 
     USERNAME_FIELD = 'login_id'
-    REQUIRED_FIELDS = ['name', 'period']
+    REQUIRED_FIELDS = ['name', 'period', 'email']
 
     def get_full_name(self):
         # The user is identified by their email address
