@@ -3,6 +3,7 @@ from django.views.generic.edit import FormView
 from django.db.models import Q
 from .models import Post, Comment
 from .forms import CommentForm, PostEditForm, PostSearchForm
+rows_per_page = 2
 
 
 def index(request):
@@ -20,7 +21,7 @@ class post_search(FormView):
     def form_valid(self, form):
         sch_word = '%s' % self.request.POST['search_word']
         post_list = Post.objects.filter(Q(title__icontains=sch_word) |
-                                         Q(content__icontains=sch_word)).distinct
+                                        Q(content__icontains=sch_word)).distinct
         context = {'form': form, 'search_term': sch_word, 'object_list': post_list}
         return render(self.request, self.template_name, context)  # No Redirection
 
@@ -47,6 +48,14 @@ def post_edit(request, pk):
         form = PostEditForm(instance=post)
     return render(request, 'board/post_new.html', {
         'form': form})
+
+
+# 글 삭제
+def post_delete(request, pk):
+    post = Post.objects.get(pk=pk)
+    post.delete()
+
+    return redirect('board:index')
 
 
 # 새글 작성

@@ -14,6 +14,10 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse('board:post_detail', args=(self.pk,))
 
+    def delete(self, *args, **kwargs):
+        self.photo.delete()
+        super(Post, self).delete(*args, **kwargs)
+
 
 class Comment(models.Model):
     post = models.ForeignKey(Post)

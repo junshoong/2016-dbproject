@@ -2,7 +2,7 @@
 
 {% block content %}
     <div class="post">
-        <a class="btn btn-default" href="{% url "board:post_edit" pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+
         <h1>{{ post.title }}</h1>
         {% if post.photo %}
             <img src="{{ post.photo.url}}" />
@@ -21,5 +21,6 @@
         <a href="{% url "board:comment_edit" post.pk comment.pk %}">수정</a>
     </li>
     {% endfor %}
-
+    <a class="btn btn-default" href="{% url "board:post_edit" pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+    <a href="{% url "board:post_delete" post.pk %}">삭제 ㄱ ㄱ</a>
 {% endblock %}
