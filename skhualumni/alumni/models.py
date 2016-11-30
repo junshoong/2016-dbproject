@@ -45,7 +45,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     period = models.IntegerField('기수', blank=True, default=0)
     position = models.CharField('동문회 직책', max_length=15, default="일반회원")
     position_all = models.CharField('총 동문회 직책', max_length=15, blank=True)
-    picture = models.ImageField('프로필 사진', blank=True)
+    picture = models.ImageField('프로필 사진', blank=True, upload_to='user_picture')
     work = models.CharField('직장', max_length=45, blank=True)
     work_phone = models.CharField('직장 전화', max_length=14, blank=True)
     work_position = models.CharField('직장 직위', max_length=45, blank=True)
