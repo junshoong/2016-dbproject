@@ -24,9 +24,6 @@
                 기수 : {{ object.period }}
             </div>
             <div class="form-row">
-                새 비밀번호 입력 : {{ form.password }}
-            </div>
-            <div class="form-row">
                 {{ form.picture.label_tag }} {{ form.picture }}
             </div>
             <div class="form-row">
@@ -61,8 +58,20 @@
 
         <div class="submit-row">
             <input type="submit" value="수정" />
-            <input type="hidden" name="next" value="{{ next }}" />
+{#            <input type="hidden" name="next" value="{{ next }}" />#}
+            <a class="btn btn-primary" href="{% url 'password_change' %}">
+                <p>비밀번호 변경</p>
+            </a>
+            <a class="btn btn-primary" href="{% url 'home' %}">
+                <p>홈으로</p>
+            </a>
         </div>
+
+{#        <div class="row">#}
+{#            <a class="btn btn-primary" href="{% url 'password_change' %}">#}
+{#                <p>비밀번호 변경</p>#}
+{#            </a>#}
+{#        </div>#}
 
         <script type="text/javascript">
             document.getElementById('id_name').focus();
