@@ -21,7 +21,6 @@ class UserUpdateView(LoginRequiredMixin, UpdateView):
 
     fields = [
         'picture',
-        'password',
         'email',
         'open_email',
         'position',
@@ -32,7 +31,7 @@ class UserUpdateView(LoginRequiredMixin, UpdateView):
         'work_phone',
         'open_work_phone',
     ]
-    success_url = reverse_lazy('mypage')
+    success_url = reverse_lazy('home')
     template_name = 'registration/user_form.html'
 
     def get_object(self, queryset=None):
@@ -43,7 +42,4 @@ class UserUpdateView(LoginRequiredMixin, UpdateView):
         return context
 
     def form_valid(self, form):
-        instance = form.save(commit=False)
-        instance.set_password(instance.password)
-        instance.save()
         return super(UserUpdateView, self).form_valid(form)
