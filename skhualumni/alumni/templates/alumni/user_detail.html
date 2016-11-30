@@ -4,8 +4,7 @@
 
 {% load staticfiles %}
 {% block content %}
-    <div id="content">
-    <div id="content">
+    <div id="content" class="container">
         <div class="user-picture-detail">
             {% if object.open_picture and object.picture %}
                 <img src="{{ object.picture.url }}" />
