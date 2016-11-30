@@ -7,7 +7,7 @@
 
     <h1>마이페이지 - {{ object.name }}</h1>
 
-    <form action="." method="POST">{% csrf_token %}
+    <form action="." method="POST" enctype="multipart/form-data">{% csrf_token %}
     {% if form.errors %}
         <p class="errornote">올바른 값을 입력해주세요!</p>
     {% endif %}
@@ -16,6 +16,7 @@
 
             <div class="form-row">
                 ID(휴대전화) : {{ object.login_id }}
+                {{ form.open_login_id.label_tag }} {{ form.open_login_id }}
             </div>
             <div class="form-row">
                 이름 : {{ object.name }}
@@ -23,8 +24,14 @@
             <div class="form-row">
                 기수 : {{ object.period }}
             </div>
+            {% if object.picture %}
+            <img src="{{ object.picture.url }}" />
+            {% endif %}
             <div class="form-row">
                 {{ form.picture.label_tag }} {{ form.picture }}
+            </div>
+            <div class="form-row">
+                {{ form.open_picture.label_tag }} {{ form.open_picture }}
             </div>
             <div class="form-row">
                 {{ form.position.label_tag }} {{ form.position }}

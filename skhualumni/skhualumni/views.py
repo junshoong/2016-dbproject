@@ -21,6 +21,8 @@ class UserUpdateView(LoginRequiredMixin, UpdateView):
 
     fields = [
         'picture',
+        'open_picture',
+        'open_login_id',
         'email',
         'open_email',
         'position',
