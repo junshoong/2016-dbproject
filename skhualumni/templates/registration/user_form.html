@@ -3,87 +3,98 @@
 {% block title %}마이페이지{% endblock %}
 
 {% block content %}
-<div id="content">
+    <div id="content">
 
-    <h1>마이페이지 - {{ object.name }}</h1>
+        <h1>마이페이지</h1>
 
-    <form action="." method="POST" enctype="multipart/form-data">{% csrf_token %}
-    {% if form.errors %}
-        <p class="errornote">올바른 값을 입력해주세요!</p>
-    {% endif %}
+        <form id="update_user" action="." method="POST" enctype="multipart/form-data">{% csrf_token %}
 
-        <fieldset class="aligned">
+            <fieldset form="update_user">
+                <legend>회원정보 수정</legend>
+                <table class="table table-bordered">
+                    <tr>
+                        <th>구분</th>
+                        <th>내용</th>
+                        <th>공개여부</th>
+                    </tr>
+                    <tr>
+                        <td>ID (휴대전화)</td>
+                        <td>{{ object.login_id }}</td>
+                        <td>{{ form.open_login_id }}</td>
+                    </tr>
+                <tr>
+                    <td>비밀번호</td>
+                    <td>
+                        <a class="btn btn-primary" href="{% url 'password_change' %}">변경 </a>
+                        <a class="btn btn-primary" href="#">초기화</a>
 
-            <div class="form-row">
-                ID(휴대전화) : {{ object.login_id }}
-                {{ form.open_login_id.label_tag }} {{ form.open_login_id }}
-            </div>
-            <div class="form-row">
-                이름 : {{ object.name }}
-            </div>
-            <div class="form-row">
-                기수 : {{ object.period }}
-            </div>
-            {% if object.picture %}
-            <img src="{{ object.picture.url }}" />
+                    </td>
+                </tr>
+                    <tr>
+                        <td>이름</td>
+                        <td>{{ object.name }}</td>
+                    </tr>
+                    <tr>
+                        <td>기수</td>
+                        <td>{{ object.period }} 기 </td>
+                    </tr>
+                    <tr>
+                        <td>프로필 사진</td>
+                        <td>
+                            {% if object.picture %}
+                                <img src="{{ object.picture.url }}" />
+                            {% endif %}
+                            <br />
+                            {{ form.picture }}
+                        </td>
+                        <td>
+                            {{ form.open_picture }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>동문회 직책</td>
+                        <td>{{ form.position }}</td>
+                    </tr>
+                    <tr>
+                        <td>총동문회 직책</td>
+                        <td>{{ object.position_all }}</td>
+                    </tr>
+                    <tr>
+                        <td>이메일</td>
+                        <td>{{ form.email }}</td>
+                        <td>{{ form.open_email }}</td>
+                    </tr>
+                    <tr>
+                        <td>직장</td>
+                        <td>{{ form.work }}</td>
+                        <td>{{ form.open_work }}</td>
+                    </tr>
+                    <tr>
+                        <td>직장 직위</td>
+                        <td>{{ form.work_position }}</td>
+                        <td>{{ form.open_work_position }}</td>
+                    </tr>
+                    <tr>
+                        <td>직장 전화</td>
+                        <td>{{ form.work_phone }}</td>
+                        <td>{{ form.open_work_phone }}</td>
+                    </tr>
+                </table>
+
+            </fieldset>
+            {% if form.errors %}
+                <p class="errornote">올바른 값을 입력해주세요!</p>
             {% endif %}
-            <div class="form-row">
-                {{ form.picture.label_tag }} {{ form.picture }}
-            </div>
-            <div class="form-row">
-                {{ form.open_picture.label_tag }} {{ form.open_picture }}
-            </div>
-            <div class="form-row">
-                {{ form.position.label_tag }} {{ form.position }}
-            </div>
-            <div class="form-row">
-                {{ form.email.label_tag }} {{ form.email }}
-            </div>
-            <div class="form-row">
-                {{ form.open_email.label_tag }} {{ form.open_email }}
-            </div>
-            <div class="form-row">
-                {{ form.work.label_tag }} {{ form.work }}
-            </div>
-            <div class="form-row">
-                {{ form.open_work.label_tag }} {{ form.open_work }}
-            </div>
-            <div class="form-row">
-                {{ form.work_position.label_tag }} {{ form.work_position }}
-            </div>
-            <div class="form-row">
-                {{ form.open_work_position.label_tag }} {{ form.open_work_position }}
-            </div>
-            <div class="form-row">
-                {{ form.work_phone.label_tag }} {{ form.work_phone }}
-            </div>
-            <div class="form-row">
-                {{ form.open_work_phone.label_tag }} {{ form.open_work_phone }}
+
+            <div class="submit-row">
+                <input type="submit" value="수정" />
+                <a class="btn btn-primary" href="{% url 'home' %}">홈으로</a>
             </div>
 
-        </fieldset>
+            <script type="text/javascript">
+                document.getElementById('id_name').focus();
+            </script>
+        </form>
 
-        <div class="submit-row">
-            <input type="submit" value="수정" />
-{#            <input type="hidden" name="next" value="{{ next }}" />#}
-            <a class="btn btn-primary" href="{% url 'password_change' %}">
-                <p>비밀번호 변경</p>
-            </a>
-            <a class="btn btn-primary" href="{% url 'home' %}">
-                <p>홈으로</p>
-            </a>
-        </div>
-
-{#        <div class="row">#}
-{#            <a class="btn btn-primary" href="{% url 'password_change' %}">#}
-{#                <p>비밀번호 변경</p>#}
-{#            </a>#}
-{#        </div>#}
-
-        <script type="text/javascript">
-            document.getElementById('id_name').focus();
-        </script>
-    </form>
-
-</div>
+    </div>
 {% endblock %}

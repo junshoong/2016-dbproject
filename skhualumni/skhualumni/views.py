@@ -33,7 +33,7 @@ class UserUpdateView(LoginRequiredMixin, UpdateView):
         'work_phone',
         'open_work_phone',
     ]
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('my_page')
     template_name = 'registration/user_form.html'
 
     def get_object(self, queryset=None):
