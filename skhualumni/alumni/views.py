@@ -10,7 +10,12 @@ class UserLV(ListView):
 
         q = self.request.GET.get("q")
         if q:
-            return queryset.filter(name__icontains=q)
+            q1 = queryset.filter(name__icontains=q)
+            q2 = queryset.filter(login_id__icontains=q)
+            q2 = q2.exclude(open_login_id=False)
+            queryset = q1 | q2
+
+            return queryset
         return queryset
 
 
