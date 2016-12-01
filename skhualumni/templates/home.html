@@ -25,7 +25,7 @@
 <!-- 공지사항 / 자유게시판 프리뷰 -->
 <div class="section">
       <div class="container">
-        <div class="row">
+        <ul class="row">
           <div class="section_ul; col-md-6">
             <h2>공지사항</h2>
             <ul>
@@ -57,36 +57,46 @@
             </ul>
             <a href="#" class="more"><span>›</span>더보기</a>
           </div>
-          <div class="section_ul; col-md-6">
+          < class="section_ul; col-md-6">
             <h2>자유게시판</h2>
-            <ul>
-              <li>
-                <span class="bu">›</span>
-                <a href="#">가을 정취가 좋습니다.</a>
-                <span class="time">2010.12.24</span>
-              </li>
-              <li>
-                <span class="bu">›</span>
-                <a href="#">햇빛이 뜨거운 여름날입니다.</a>
-                <span class="time">2010.12.24</span>
-              </li>
-              <li>
-                <span class="bu">›</span>
-                <a href="#">무궁화 꽃이 피었습니다.</a>
-                <span class="time">2010.12.24</span>
-              </li>
-              <li>
-                <span class="bu">›</span>
-                <a href="#">햇빛이 따사로운 봄이 되었습니다.</a>
-                <span class="time">2010.12.24</span>
-              </li>
-              <li>
-                <span class="bu">›</span>
-                <a href="#">아직 바람이 쌀쌀합니다.</a>
-                <span class="time">2010.12.24</span>
-              </li>
-            </ul>
-            <a href="#" class="more"><span>›</span>더보기</a>
+                <ul>
+                    {% for post in post_list %}
+                        <li>
+                            <span class="bu">›</span>
+                            <a href="{% url "board:post_detail" post.pk %}">{{ post.title }}</a>
+                            <span class="time">{{ post.created_at }}</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+              {##}
+{#              <ul>#}
+{#              <li>#}
+{#                <span class="bu">›</span>#}
+{#                <a href="#">가을 정취가 좋습니다.</a>#}
+{#                <span class="time">2010.12.24</span>#}
+{#              </li>#}
+{#              <li>#}
+{#                <span class="bu">›</span>#}
+{#                <a href="#">햇빛이 뜨거운 여름날입니다.</a>#}
+{#                <span class="time">2010.12.24</span>#}
+{#              </li>#}
+{#              <li>#}
+{#                <span class="bu">›</span>#}
+{#                <a href="#">무궁화 꽃이 피었습니다.</a>#}
+{#                <span class="time">2010.12.24</span>#}
+{#              </li>#}
+{#              <li>#}
+{#                <span class="bu">›</span>#}
+{#                <a href="#">햇빛이 따사로운 봄이 되었습니다.</a>#}
+{#                <span class="time">2010.12.24</span>#}
+{#              </li>#}
+{#              <li>#}
+{#                <span class="bu">›</span>#}
+{#                <a href="#">아직 바람이 쌀쌀합니다.</a>#}
+{#                <span class="time">2010.12.24</span>#}
+{#              </li>#}
+{#            </ul>#}
+            <a href="{% url "board:index" %}" class="more"><span>›</span>더보기</a>
           </div>
         </div>
       </div>

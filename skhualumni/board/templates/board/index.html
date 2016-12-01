@@ -1,4 +1,5 @@
-<link href="board.css" rel="stylesheet">
+<!doctype html>
+<link rel="stylesheet" type="text/css" href="/static/css/base.css"/>
 {% extends "base.html" %}
 
 {% block title %}자유게시판{% endblock %}
@@ -13,7 +14,7 @@
                     <div class="section">
                         <div class="container">
                             <table cellspacing="0" border="1" summary="게시판의 글제목 리스트" class="tbl_type">
-                                <caption>게시판 리스트</caption>
+                                <caption>자유 게시판</caption>
                                 <colgroup>
                                     <col width="80">
                                     <col>
@@ -31,126 +32,20 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td class="num">10</td>
-                                    <td class="title">
-                                        <a href="#">제목이 제목제목</a>
-                                    </td>
-                                    <td>
-                                        <a href="#">스마일</a>
-                                    </td>
-                                    <td class="date">2016/11/29</td>
-                                    <td class="hit">1234</td>
-                                </tr>
-                                <tr class="reply">
-                                    <td class="num">&nbsp;</td>
-                                    <td class="title" style="padding-left:10px;">
-                                        <a href="#">제목이 제목제목 답글</a>
-                                    </td>
-                                    <td>
-                                        <a href="#">킴스</a>
-                                    </td>
-                                    <td class="date">2016/12/01</td>
-                                    <td class="hit">1234</td>
-                                </tr>
-                                <tr>
-                                    <td class="num">9</td>
-                                    <td class="title">
-                                        <a href="#">제목이 제목제목</a>
-                                    </td>
-                                    <td>
-                                        <a href="#">스마일</a>
-                                    </td>
-                                    <td class="date">2016/11/29</td>
-                                    <td class="hit">1234</td>
-                                </tr>
-                                <tr>
-                                    <td class="num">8</td>
-                                    <td class="title">
-                                        <a href="#">제목이 제목제목</a>
-                                    </td>
-                                    <td>
-                                        <a href="#">스마일</a>
-                                    </td>
-                                    <td class="date">2016/11/29</td>
-                                    <td class="hit">1234</td>
-                                </tr>
-                                <tr>
-                                    <td class="num">7</td>
-                                    <td class="title">
-                                        <a href="#">제목이 제목제목</a>
-                                    </td>
-                                    <td>
-                                        <a href="#">스마일</a>
-                                    </td>
-                                    <td class="date">2016/11/29</td>
-                                    <td class="hit">1234</td>
-                                </tr>
-                                <tr>
-                                    <td class="num">6</td>
-                                    <td class="title">
-                                        <a href="#">제목이 제목제목</a>
-                                    </td>
-                                    <td>
-                                        <a href="#">스마일</a>
-                                    </td>
-                                    <td class="date">2016/11/29</td>
-                                    <td class="hit">1234</td>
-                                </tr>
-                                <tr>
-                                    <td class="num">5</td>
-                                    <td class="title">
-                                        <a href="#">제목이 제목제목</a>
-                                    </td>
-                                    <td>
-                                        <a href="#">스마일</a>
-                                    </td>
-                                    <td class="date">2016/11/29</td>
-                                    <td class="hit">1234</td>
-                                </tr>
-                                <tr>
-                                    <td class="num">4</td>
-                                    <td class="title">
-                                        <a href="#">제목이 제목제목</a>
-                                    </td>
-                                    <td>
-                                        <a href="#">스마일</a>
-                                    </td>
-                                    <td class="date">2016/11/29</td>
-                                    <td class="hit">1234</td>
-                                </tr>
-                                <tr>
-                                    <td class="num">3</td>
-                                    <td class="title">
-                                        <a href="#">제목이 제목제목</a>
-                                    </td>
-                                    <td>
-                                        <a href="#">스마일</a>
-                                    </td>
-                                    <td class="date">2016/11/29</td>
-                                    <td class="hit">1234</td>
-                                </tr>
-                                <tr>
-                                    <td class="num">2</td>
-                                    <td class="title">
-                                        <a href="#">제목이 제목제목</a>
-                                    </td>
-                                    <td>
-                                        <a href="#">스마일</a>
-                                    </td>
-                                    <td class="date">2016/11/29</td>
-                                    <td class="hit">1234</td>
-                                </tr><tr>
-                                    <td class="num">1</td>
-                                    <td class="title">
-                                        <a href="#">제목이 제목제목</a>
-                                    </td>
-                                    <td>
-                                        <a href="#">스마일</a>
-                                    </td>
-                                    <td class="date">2016/11/29</td>
-                                    <td class="hit">1234</td>
-                                </tr>
+                                {% for post in post_list %}
+                                    <tr>
+                                        <td class="num">{{ post.pk }}</td>
+                                        <td class="title">
+                                            <a href="{% url "board:post_detail" post.pk %}">{{ post.title }}</a>
+                                        </td>
+                                        <td>
+                                            <a href="#">작성자 수정중</a>
+                                        </td>
+                                        <td class="date">{{ post.created_at }}</td>
+                                        <td class="hit">아직 구현 안함</td>
+                                    </tr>
+                                {% endfor %}
+
                                 </tbody>
                             </table>
                             <center>
