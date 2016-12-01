@@ -16,3 +16,4 @@ class UserLV(ListView):
 
 class UserDV(DetailView):
     model = User
+    context_object_name = 'alumni'
