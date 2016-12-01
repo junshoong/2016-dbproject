@@ -5,6 +5,7 @@
 {% load staticfiles %}
 {% block content %}
 
+<!-- 메인 숲 사진 -->
 <div class="cover">
     <div class="cover-image" style="background-image: url(https://unsplash.imgix.net/photo-1418065460487-3e41a6c84dc5?q=25&amp;fm=jpg&amp;s=127f3a3ccf4356b7f79594e05f6c840e);"></div>
     <div class="container">
@@ -20,5 +21,75 @@
         </div>
     </div>
 </div>
+
+<!-- 공지사항 / 자유게시판 프리뷰 -->
+<div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="section_ul; col-md-6">
+            <h2>공지사항</h2>
+            <ul>
+              <li>
+                <span class="bu">›</span>
+                <a href="#">12월 공지사항</a>
+                <span class="time">2016.12.01</span>
+              </li>
+              <li>
+                <span class="bu">›</span>
+                <a href="#">09월 공지사항</a>
+                <span class="time">2016.09.24</span>
+              </li>
+              <li>
+                <span class="bu">›</span>
+                <a href="#">07월 공지사항</a>
+                <span class="time">2016.06.04</span>
+              </li>
+              <li>
+                <span class="bu">›</span>
+                <a href="#">06월 공지사항</a>
+                <span class="time">2016.06.08</span>
+              </li>
+              <li>
+                <span class="bu">›</span>
+                <a href="#">03월 공지사항</a>
+                <span class="time">2016.03.02</span>
+              </li>
+            </ul>
+            <a href="#" class="more"><span>›</span>더보기</a>
+          </div>
+          <div class="section_ul; col-md-6">
+            <h2>자유게시판</h2>
+            <ul>
+              <li>
+                <span class="bu">›</span>
+                <a href="#">가을 정취가 좋습니다.</a>
+                <span class="time">2010.12.24</span>
+              </li>
+              <li>
+                <span class="bu">›</span>
+                <a href="#">햇빛이 뜨거운 여름날입니다.</a>
+                <span class="time">2010.12.24</span>
+              </li>
+              <li>
+                <span class="bu">›</span>
+                <a href="#">무궁화 꽃이 피었습니다.</a>
+                <span class="time">2010.12.24</span>
+              </li>
+              <li>
+                <span class="bu">›</span>
+                <a href="#">햇빛이 따사로운 봄이 되었습니다.</a>
+                <span class="time">2010.12.24</span>
+              </li>
+              <li>
+                <span class="bu">›</span>
+                <a href="#">아직 바람이 쌀쌀합니다.</a>
+                <span class="time">2010.12.24</span>
+              </li>
+            </ul>
+            <a href="#" class="more"><span>›</span>더보기</a>
+          </div>
+        </div>
+      </div>
+    </div>
 
 {% endblock %}
