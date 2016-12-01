@@ -15,7 +15,7 @@ def index(request):
         'post_list': post_list,
     })
 
-"""
+
 # 글 검색
 class post_search(FormView):
     form_class = PostSearchForm
@@ -27,7 +27,7 @@ class post_search(FormView):
                                         Q(content__icontains=sch_word)).distinct
         context = {'form': form, 'search_term': sch_word, 'object_list': post_list}
         return render(self.request, self.template_name, context)  # No Redirection
-"""
+
 
 # 포스트 보기
 def post_detail(request, pk):
