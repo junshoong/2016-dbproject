@@ -24,16 +24,17 @@
             <div class="col-md-6">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="{% url 'info:index' %}">기관 소개</a></li>
+                    {% if user.is_active %}
                     <li><a href="{% url 'board:index' %}">열림마당</a></li>
                     <li><a href="{% url 'alumni:index' %}">동문회</a></li>
                     <li><a href="#">기타서비스</a></li>
-                    {% if user.is_active %}
-                        {% if user.is_admin %}
-                        <li><a href="{% url 'admin:index' %}">Admin</a></li>
-                        {% endif %}
                     <li><a href="{% url 'my_page' %}">마이페이지</a></li>
                     <li><a href="{% url 'logout' %}">Logout</a></li>
+                    {% if user.is_admin %}
+                    <li><a href="{% url 'admin:index' %}">Admin</a></li>
+                    {% endif %}
                     {% else %}
+                    <li><a href="#">기타서비스</a></li>
                     <li><a href="{% url 'login' %}">Login</a></li>
                     {% endif %}
                 </ul>

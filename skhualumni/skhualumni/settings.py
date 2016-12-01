@@ -138,6 +138,19 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # for Auth
 
-LOGIN_URL = '/accounts/login/'
-LOGOUT = '/accounts/logout/'
+LOGIN_URL = '/login/'
+LOGOUT = '/logout/'
 LOGIN_REDIRECT_URL = '/'
+
+# send email for forgot password
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'team.kimkongko@gmail.com'
+EMAIL_HOST_PASSWORD = 'qq12341234'
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'team.kimkongko@gmail.com'
+# SERVER_EMAIL = EMAIL_HOST_USER
+
+
