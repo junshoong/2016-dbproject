@@ -2,7 +2,8 @@ from django.db import models
 from django.core.urlresolvers import reverse
 
 class Post(models.Model):
-    title = models.CharField(max_length=100)
+    category = models.CharField(max_length=10)
+    title = models.CharField(max_length=50)
     content = models.TextField(max_length=10000)
     photo = models.ImageField(blank=True, null=True, upload_to='FreeBoard/%Y/%m/%d')
     created_at = models.DateTimeField(auto_now_add=True)
