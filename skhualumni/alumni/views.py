@@ -14,8 +14,6 @@ class UserLV(ListView):
             q2 = queryset.filter(login_id__icontains=q)
             q2 = q2.exclude(open_login_id=False)
             queryset = q1 | q2
-
-            return queryset
         return queryset
 
 
