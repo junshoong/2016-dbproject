@@ -7,7 +7,17 @@
 <content>
     <div class="section">
         <div class="container">
-            <h1>동문 명단</h1>
+            <div class="section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="page-header">
+                                <h1>동문회</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div id="user-search">
                 {% include "alumni/_user_search.html" %}
             </div>
@@ -19,33 +29,33 @@
             </div>
             {% for user in object_list %}
             {% if forloop.counter|divisibleby:2 %}
-                <div class="row">
-            {% endif %}
+            <div class="row">
+                {% endif %}
 
                 <a href="{% url 'alumni:detail' user.id %}">
                     <div class="col-md-2">
                         {% if user.open_picture and user.picture %}
-                            <img class="img-circle img-responsive" src="{{ user.picture.url }}" />
+                        <img class="img-circle img-responsive" src="{{ user.picture.url }}" />
                         {% else %}
-                            <img class="img-circle img-responsive" src="{% static "/images/etc/unknown.png" %}" />
+                        <img class="img-circle img-responsive" src="{% static "/images/etc/unknown.png" %}" />
                         {% endif %}
                     </div>
                 </a>
-                    <div class="col-md-4">
-                        <h3 class="text-left">{{ user }}</h3>
-                        <p class="text-left">{{ user.period }} / {{ user.position }}</p>
-                        {% if user.open_login_id %}
-                            <p class="text-left">
-                            <a href="tel:{{ user.login_id }}">{{ user.login_id }}</a>
+                <div class="col-md-4">
+                    <h3 class="text-left">{{ user }}</h3>
+                    <p class="text-left">{{ user.period }} / {{ user.position }}</p>
+                    {% if user.open_login_id %}
+                    <p class="text-left">
+                        <a href="tel:{{ user.login_id }}">{{ user.login_id }}</a>
                         {% endif %}
                         {% if user.open_email %}
-                            <p class="text-left">
-                                <a href="mailto:{{ user.email }}">{{ user.email }}</a>
-                            </p>
-                        {% endif %}
-                    </div>
-            {% if forloop.counter|divisibleby:2 %}
+                    <p class="text-left">
+                        <a href="mailto:{{ user.email }}">{{ user.email }}</a>
+                    </p>
+                    {% endif %}
                 </div>
+                {% if forloop.counter|divisibleby:2 %}
+            </div>
             {% endif %}
             {% endfor %}
         </div>
