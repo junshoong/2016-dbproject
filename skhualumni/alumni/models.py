@@ -72,23 +72,23 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def get_short_name(self):
         # The user is identified by their email address
-        return  self.name
+        return self.name
 
     def __str__(self):
         return self.name
 
     def has_perm(self, perm, obj=None):
-        "Does the user have a specific permission?"
+        # "Does the user have a specific permission?"
         # Simplest possible answer: Yes, always
         return True
 
     def has_module_perms(self, app_label):
-        "Does the user have permissions to view the app `app_label`?"
+        # "Does the user have permissions to view the app `app_label`?"
         # Simplest possible answer: Yes, always
         return True
 
     @property
     def is_staff(self):
-        "Is the user a member of staff?"
+        # "Is the user a member of staff?"
         # Simplest possible answer: All admins are staff
         return self.is_admin

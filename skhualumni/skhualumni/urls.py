@@ -22,12 +22,10 @@ from skhualumni.views import HomeView, UserUpdateView
 urlpatterns = [
     url(r'^$', HomeView.as_view(), name='home'),
     # login, logout, password_change
-    url(r'^accounts/', include('django.contrib.auth.urls')),
-    url(r'^accounts/my_page/$', UserUpdateView.as_view(), name='my_page'),
-
+    url(r'^', include('django.contrib.auth.urls')),
+    url(r'^my_page/$', UserUpdateView.as_view(), name='my_page'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^board/', include('board.urls', namespace='board')),
     url(r'^alumni/', include('alumni.urls', namespace='alumni')),
     url(r'^info/', include('info.urls', namespace='info')),
-
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
