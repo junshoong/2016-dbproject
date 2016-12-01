@@ -11,8 +11,8 @@
     </div>
     <ul>
         {% for user in object_list %}
-            <a href="{% url 'alumni:detail' user.id %}">
             <div class="user-box" >
+                <a href="{% url 'alumni:detail' user.id %}">
                 <div class="user-picture">
                 {% if user.open_picture and user.picture %}
                     <img src="{{ user.picture.url }}" />
@@ -24,14 +24,18 @@
                     <li>{{ user }}</li>
                     <li>{{ user.period }}기 / {{ user.position }}</li>
                 </div>
+                </a>
                 {% if user.open_login_id %}
-                <div class="user-call">{{ user.login_id }}</div>
+                <div class="user-call">
+                    <a href="tel:{{ user.login_id }}">{{ user.login_id }}</a>
+                </div>
                 {% endif %}
                 {% if user.open_email %}
-                <div class="user-mail">{{ user.email }}</div>
+                <div class="user-mail">
+                    <a href="mailto:{{ user.email }}">{{ user.email }}</a>
+                </div>
                 {% endif %}
             </div>
-            </a>
         {% endfor %}
     </ul>
 </div>
