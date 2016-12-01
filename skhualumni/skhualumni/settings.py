@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     # Added apps
     'alumni.apps.AlumniConfig',
     'board',
+    'notice',
     'info.apps.InfoConfig',
 ]
 
