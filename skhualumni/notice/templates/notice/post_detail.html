@@ -92,7 +92,7 @@
                                 <td><input type="text" title="이름" name="" value="" class="name"></td>
                                 <td><textarea cols="65" rows="5" name="" class="comment"></textarea>
                                     <input type="submit" title="입력" value="입력" class="submit">
-                                    <a href="{% url "board:comment_new" post.pk %}">댓글 작성</a>
+                                    <a href="{% url "notice:comment_new" post.pk %}">댓글 작성</a>
                                 </td>
                             </tr>
                             {% for comment in post.comment_set.all %}
@@ -101,7 +101,7 @@
                                     <td> {{ comment.message }} </td>
                                     <td> {{ comment.created_at }} </td>
                                 </tr>
-                                <a href="{% url "board:comment_edit" post.pk comment.pk %}">수정</a>
+                                <a href="{% url "notice:comment_edit" post.pk comment.pk %}">수정</a>
                             {% endfor %}
                             </tbody>
                         </table>
@@ -113,17 +113,4 @@
     </body>
     </html>
 
-<<<<<<< HEAD
-    {% for comment in post.comment_set.all %}
-    <li>
-        {{ comment.message }}
-        <small>by {{ comment.author }}</small>
-        <small>{{ comment.created_at }}</small>
-        <a class="btn btn-default" href="{% url "board:comment_edit" post.pk comment.pk %}">수정</a>
-    </li>
-    {% endfor %}
-    <a class="btn btn-default" href="{% url "board:post_edit" pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-    <a href="{% url "board:post_delete" post.pk %}">삭제 ㄱ ㄱ</a>
-=======
->>>>>>> kokong
 {% endblock %}
