@@ -18,7 +18,7 @@
         {{ comment.message }}
         <small>by {{ comment.author }}</small>
         <small>{{ comment.created_at }}</small>
-        <a href="{% url "board:comment_edit" post.pk comment.pk %}">수정</a>
+        <a class="btn btn-default" href="{% url "board:comment_edit" post.pk comment.pk %}">수정</a>
     </li>
     {% endfor %}
     <a class="btn btn-default" href="{% url "board:post_edit" pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
