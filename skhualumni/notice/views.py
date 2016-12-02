@@ -1,3 +1,6 @@
+from django.shortcuts import render
+
+# Create your views here.
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic.edit import FormView
 from django.db.models import Q
@@ -9,7 +12,7 @@ rows_per_page = 2
 @login_required
 def index(request):
     post_list = Post.objects.all()
-    return render(request, 'board/index.html', {
+    return render(request, 'notice/index.html', {
         'post_list': post_list,
     })
 
@@ -17,7 +20,7 @@ def index(request):
 # 글 검색
 class post_search(FormView):
     form_class = PostSearchForm
-    template_name = 'board/post_search.html'
+    template_name = 'notice/post_search.html'
 
     def form_valid(self, form):
         sch_word = '%s' % self.request.POST['search_word']
@@ -31,7 +34,7 @@ class post_search(FormView):
 @login_required
 def post_detail(request, pk):
     post = Post.objects.get(pk=pk)
-    return render(request, 'board/post_detail.html', {
+    return render(request, 'notice/post_detail.html', {
         'post': post,
     })
 
@@ -46,10 +49,10 @@ def post_edit(request, pk):
             post = form.save(commit=False)
             post.author = request.user
             post.save()
-            return redirect('board:post_detail', pk=post.pk)
+            return redirect('notice:post_detail', pk=post.pk)
     else:
         form = PostEditForm(instance=post)
-    return render(request, 'board/post_new.html', {
+    return render(request, 'notice/post_new.html', {
         'form': form})
 
 
@@ -59,7 +62,7 @@ def post_delete(request, pk):
     post = Post.objects.get(pk=pk)
     post.delete()
 
-    return redirect('board:index')
+    return redirect('notice:index')
 
 
 # 새글 작성
@@ -71,10 +74,10 @@ def post_new(request):
             post = form.save(commit=False)
             post.author = request.user
             post.save()
-            return redirect('board:post_detail', pk=post.pk)
+            return redirect('notice:post_detail', pk=post.pk)
     else:
         form = PostEditForm()
-    return render(request, 'board/post_new.html', {'form': form})
+    return render(request, 'notice/post_new.html', {'form': form})
 
 
 # 댓글 생성
@@ -86,10 +89,10 @@ def comment_new(request, pk):
             comment = form.save(commit=False)
             comment.post = Post.objects.get(pk=pk)
             comment.save()
-            return redirect('board:post_detail', pk)
+            return redirect('notice:post_detail', pk)
     else:
         form = CommentForm()
-    return render(request, 'board/post_form.html', {
+    return render(request, 'notice/post_form.html', {
         'form': form,
     })
 
@@ -104,9 +107,9 @@ def comment_edit(request, post_pk, pk):
             comment = form.save(commit=False)
             comment.post = Post.objects.get(pk=post_pk)
             comment.save()
-            return redirect('board:post_detail', post_pk)
+            return redirect('notice:post_detail', post_pk)
     else:
         form = CommentForm(instance=comment)
-    return render(request, 'board/post_form.html', {
+    return render(request, 'notice/post_form.html', {
         'form': form,
     })

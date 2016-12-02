@@ -59,7 +59,7 @@
                     <tbody>
                     <tr>
                         <th scope="row">작성자</th>
-                        <td>작성자를 작성작성</td>
+                        <td>{{ post.writer }}</td>
                         <th scope="row">작성일</th>
                         <td> {{ post.created_at }} </td>
                         <th scope="row">조회</th>
@@ -92,7 +92,7 @@
                                 <td><input type="text" title="이름" name="" value="" class="name"></td>
                                 <td><textarea cols="65" rows="5" name="" class="comment"></textarea>
                                     <input type="submit" title="입력" value="입력" class="submit">
-                                    <a href="{% url "board:comment_new" post.pk %}">댓글 작성</a>
+                                    <a href="{% url "notice:comment_new" post.pk %}">댓글 작성</a>
                                 </td>
                             </tr>
                             {% for comment in post.comment_set.all %}
@@ -101,7 +101,7 @@
                                     <td> {{ comment.message }} </td>
                                     <td> {{ comment.created_at }} </td>
                                 </tr>
-                                <a href="{% url "board:comment_edit" post.pk comment.pk %}">수정</a>
+                                <a href="{% url "notice:comment_edit" post.pk comment.pk %}">수정</a>
                             {% endfor %}
                             </tbody>
                         </table>
