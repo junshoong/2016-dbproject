@@ -1,11 +1,10 @@
 {% extends "base.html" %}
 {% block title %}post_search.html{% endblock %}
 
-
 {% block content %}
     <h1>공지사항 검색</h1>
     <form action="." method="post"> {% csrf_token %}
-        {{  form.as_table }}
+        {{ form.as_table }}
         <input type="submit" value="Submit" />
     </form>
 
@@ -22,6 +21,4 @@
     <b><i>검색하신 단어 ({{ search_term }}) 가 없습니다.</i></b>
     {% endif %}
 
-
-    </div>
 {% endblock %}

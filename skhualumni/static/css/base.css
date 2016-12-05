@@ -3,6 +3,7 @@ div#header {
     height:180px;
     background-color:#80b195;
 }
+
 .maintitile {
     width:360px;
     height:180px;
@@ -28,7 +29,12 @@ div#menu li {
     display: inline-block;
 }
 
+.cover-image {
+    background-image: url("/static/images/main_background.jpg");
+}
 
+
+/* for board tables */
 legend{display:none}
 .tbl_type,.tbl_type th,.tbl_type td{border:0}
 .tbl_type{width:100%;border-top:1px solid #999;border-bottom:1px solid #999;color:#666;font-size:12px;table-layout:fixed}
@@ -44,9 +50,5 @@ legend{display:none}
 .tbl_type2 .input_txt td input,.tbl_type2 .input_txt td textarea{vertical-align:middle}
 .tbl_type2 .input_txt input.name{width:100px;padding:2px 0 1px;border:solid 1px #d2d2d2}
 .tbl_type2 .input_txt textarea.comment{width:80%;height:14px;padding:2px 0 1px;border:solid 1px #d2d2d2}
-<<<<<<< HEAD
-.tbl_type2 .input_txt input.submit{width:60px;border:solid 1px #666;background-color:#f2f2f2;font-family:'µ¸¿ò';font-size:12px;line-height:normal}
-=======
-.tbl_type2 .input_txt input.submit{width:60px;border:solid 1px #666;background-color:#f2f2f2;font-family:'ï¿½ï¿½ï¿½ï¿½';font-size:12px;line-height:normal}
+.tbl_type2 .input_txt input.submit{width:60px;border:solid 1px #666;background-color:#f2f2f2;font-size:12px;line-height:normal}
 
->>>>>>> kokong
