@@ -3,10 +3,11 @@ from django.views.generic.edit import FormView
 from django.db.models import Q
 from .models import Post, Comment
 from .forms import CommentForm, PostEditForm, PostSearchForm
+from django.contrib.auth.decorators import login_required
 
 rows_per_page = 2
 
-
+@login_required
 def index(request):
     post_list = Post.objects.all()
     return render(request, 'board/index.html', {'post_list': post_list, })
@@ -26,12 +27,14 @@ class PostSearch(FormView):
 
 
 # 포스트 보기
+@login_required
 def post_detail(request, pk):
     post = Post.objects.get(pk=pk)
     return render(request, 'board/post_detail.html', {'post': post, })
 
 
 # 글 수정
+@login_required
 def post_edit(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
@@ -47,6 +50,7 @@ def post_edit(request, pk):
 
 
 # 글 삭제
+@login_required
 def post_delete(request, pk):
     post = Post.objects.get(pk=pk)
     post.delete()
@@ -55,6 +59,7 @@ def post_delete(request, pk):
 
 
 # 새글 작성
+@login_required
 def post_new(request):
     if request.method == "POST":
         form = PostEditForm(request.POST, request.FILES)
@@ -69,6 +74,7 @@ def post_new(request):
 
 
 # 댓글 생성
+@login_required
 def comment_new(request, pk):
     if request.method == 'POST':
         form = CommentForm(request.POST)
@@ -83,6 +89,7 @@ def comment_new(request, pk):
 
 
 # 댓글 수정
+@login_required
 def comment_edit(request, post_pk, pk):
     comment = Comment.objects.get(pk=pk)
     if request.method == 'POST':
