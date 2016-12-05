@@ -1,47 +1,6 @@
-{#{% extends "base.html" %}#}
-{##}
-{#{% block content %}#}
-{#    <div class="post">#}
-{##}
-{#        <h1>{{ post.title }}</h1>#}
-{#        {% if post.photo %}#}
-{#            <img src="{{ post.photo.url}}" />#}
-{#        {% endif%}#}
-{#        <p>{{ post.content | linebreaksbr }}</p>#}
-{#    </div>#}
-{#    <h3>Comments</h3>#}
-{##}
-{#    <a href="{% url "board:comment_new" post.pk %}">댓글 작성</a>#}
-{##}
-{#    {% for comment in post.comment_set.all %}#}
-{#    <li>#}
-{#        {{ comment.message }}#}
-{#        <small>by {{ comment.author }}</small>#}
-{#        <small>{{ comment.created_at }}</small>#}
-{#        <a href="{% url "board:comment_edit" post.pk comment.pk %}">수정</a>#}
-{#    </li>#}
-{#    {% endfor %}#}
-{#    <a class="btn btn-default" href="{% url "board:post_edit" pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>#}
-{#    <a href="{% url "board:post_delete" post.pk %}">삭제 ㄱ ㄱ</a>#}
-{#{% endblock %}#}
-
 {% extends "base.html" %}
 
 {% block content %}
-
-    <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-        <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-        <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-        <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css">
-        <link href="board.css" rel="stylesheet">
-    </head>
-
-    <body>
-    <content>
         <div class="section">
             <div class="container">
                 <table cellspacing="0" border="1" summary="글 내용을 표시" class="tbl_type">
@@ -109,8 +68,6 @@
                 </form>
             </div>
         </div>
-    </content>
-    </body>
-    </html>
-
+    <a class="btn btn-default" href="{% url "board:post_edit" pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+    <a href="{% url "board:post_delete" post.pk %}">삭제</a>
 {% endblock %}

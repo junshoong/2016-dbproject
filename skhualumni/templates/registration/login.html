@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+<html><head></head><body>{% extends "base.html" %}
 
 {% block title %}로그인{% endblock %}
 
@@ -8,29 +8,36 @@
     <h1>로그인</h1>
 
     <form action="." method="POST">{% csrf_token %}
-    {% if form.errors %}
+        {% if form.errors %}
         <p class="errornote">ID와 비밀번호가 일치하지 않습니다. 다시 입력해주세요.</p>
-    {% endif %}
+        {% endif %}
 
         <p>ID와 비밀번호를 입력해주세요.</p>
 
         <fieldset class="aligned">
 
+
             <div class="form-row">
-                {{ form.username.label_tag }} {{ form.username }}
+                <div class="col-sm-1">{{ form.username.label_tag }}</div>
+                <div class="col-sm-11">{{ form.username }}</div>
             </div>
 
             <div class="form-row">
-                {{ form.password.label_tag }} {{ form.password }}
+                <div class="col-sm-1">{{ form.password.label_tag }}</div>
+                <div class="col-sm-11">{{ form.password }}</div>
             </div>
 
         </fieldset>
 
         <div class="submit-row">
-            <input type="submit" value="로그인" />
-            <input type="hidden" name="next" value="{{ next }}" />
-            <a href="{% url 'password_reset' %}">비밀번호를 잊어 버렸나요?</a>
+            <div class="col-sm-1">&nbsp;</div>
+            <div class="col-sm-11">
+                <input type="submit" value="로그인" />
+                <input type="hidden" name="next" value="{{ next }}" />
+                <a href="{% url 'password_reset' %}">비밀번호를 잊어 버렸나요?</a>
+            </div>
         </div>
+
 
         <script type="text/javascript">
             document.getElementById('id_username').focus();
@@ -38,4 +45,4 @@
     </form>
 
 </div>
-{% endblock %}
+{% endblock %}</body></html>

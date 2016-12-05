@@ -1,13 +1,12 @@
-from django.shortcuts import render
-
-# Create your views here.
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic.edit import FormView
 from django.db.models import Q
 from .models import Post, Comment
 from .forms import CommentForm, PostEditForm, PostSearchForm
 from django.contrib.auth.decorators import login_required
+
 rows_per_page = 2
+
 
 @login_required
 def index(request):
@@ -18,7 +17,7 @@ def index(request):
 
 
 # 글 검색
-class post_search(FormView):
+class PostSearch(FormView):
     form_class = PostSearchForm
     template_name = 'notice/post_search.html'
 
@@ -34,9 +33,7 @@ class post_search(FormView):
 @login_required
 def post_detail(request, pk):
     post = Post.objects.get(pk=pk)
-    return render(request, 'notice/post_detail.html', {
-        'post': post,
-    })
+    return render(request, 'notice/post_detail.html', {'post': post, })
 
 
 # 글 수정
@@ -52,8 +49,7 @@ def post_edit(request, pk):
             return redirect('notice:post_detail', pk=post.pk)
     else:
         form = PostEditForm(instance=post)
-    return render(request, 'notice/post_new.html', {
-        'form': form})
+    return render(request, 'notice/post_new.html', {'form': form, })
 
 
 # 글 삭제
@@ -77,7 +73,7 @@ def post_new(request):
             return redirect('notice:post_detail', pk=post.pk)
     else:
         form = PostEditForm()
-    return render(request, 'notice/post_new.html', {'form': form})
+    return render(request, 'notice/post_new.html', {'form': form, })
 
 
 # 댓글 생성
@@ -92,9 +88,7 @@ def comment_new(request, pk):
             return redirect('notice:post_detail', pk)
     else:
         form = CommentForm()
-    return render(request, 'notice/post_form.html', {
-        'form': form,
-    })
+    return render(request, 'notice/post_form.html', {'form': form, })
 
 
 # 댓글 수정
@@ -110,6 +104,4 @@ def comment_edit(request, post_pk, pk):
             return redirect('notice:post_detail', post_pk)
     else:
         form = CommentForm(instance=comment)
-    return render(request, 'notice/post_form.html', {
-        'form': form,
-    })
+    return render(request, 'notice/post_form.html', {'form': form, })

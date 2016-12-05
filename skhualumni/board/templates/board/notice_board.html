@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link href="board.css" rel="stylesheet">
-</head>
-<body>
-<content>
+{% extends "base.html" %}
+
+{% block content %}
     <div class="section">
         <div class="container">
             <table cellspacing="0" border="1" summary="게시판의 글제목 리스트" class="tbl_type">
@@ -177,6 +171,4 @@
             </center>
         </div>
     </div>
-</content>
-</body>
-</html>
+{% endblock %}

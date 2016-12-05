@@ -1,10 +1,7 @@
-<!doctype html>
-<link rel="stylesheet" type="text/css" href="/static/css/base.css"/>
 {% extends "base.html" %}
 
 {% block title %}자유게시판{% endblock %}
 
-{% load staticfiles %}
 {% block content %}
 <div id="content">
     <div class="container">
@@ -49,31 +46,33 @@
 
                                 </tbody>
                             </table>
-                            <center>
-                                <ul class="pagination" style="position:center">
-                                    <li>
-                                        <a href="#">Prev</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">1</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">2</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">3</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">4</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">5</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Next</a>
-                                    </li>
-                                </ul>
-                            </center>
+                            <div>
+                                    <ul class="pagination" style="position:center">
+                                        <li>
+                                            <a href="#">Prev</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">1</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">2</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">3</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">4</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">5</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Next</a>
+                                        </li>
+                                    </ul>
+                                <ul class="btn btn-primary" style="float:right">글쓰기</ul>
+                            </div>
+
                         </div>
                     </div>
                 </content>

@@ -1,56 +1,56 @@
-<!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}SKHU 동문회 사이트{% endblock %}</title>
+
     {% load staticfiles %}
-    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="/static/css/base.css"/>
     <link rel="stylesheet" type="text/css" href="{% block extrastyle %}{% endblock %}"/>
 
-
 </head>
 <body>
 {% block header %}
-<header>
-    <div class="navbar navbar-default navbar-static-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="{% url "home" %}"><span>성공회대학교 인문학습원</span></a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar-ex-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{% url 'info:index' %}">기관 소개</a></li>
-                    {% if user.is_active %}
-                    <li><a href="{% url 'board:index' %}">열림마당</a></li>
-                    <li><a href="{% url 'alumni:index' %}">동문회</a></li>
-                    <li><a href="#">기타서비스</a></li>
-                    <li><a href="{% url 'my_page' %}">마이페이지</a></li>
-                    <li><a href="{% url 'logout' %}">Logout</a></li>
-                    {% if user.is_admin %}
-                    <li><a href="{% url 'admin:index' %}">Admin</a></li>
-                    {% endif %}
-                    {% else %}
-                    <li><a href="#">기타서비스</a></li>
-                    <li><a href="{% url 'login' %}">Login</a></li>
-                    {% endif %}
-                </ul>
+    <header>
+        <div class="navbar navbar-default navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{% url "home" %}"><span>성공회대학교 인문학습원</span></a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{% url 'info:index' %}">기관 소개</a></li>
+                        {% if user.is_active %}
+                            <li><a href="{% url 'board:index' %}">열림마당</a></li>
+                            <li><a href="{% url 'alumni:index' %}">동문회</a></li>
+                            <li><a href="#">기타서비스</a></li>
+                            <li><a href="{% url 'my_page' %}">마이페이지</a></li>
+                            <li><a href="{% url 'logout' %}">Logout</a></li>
+                            {% if user.is_admin %}
+                                <li><a href="{% url 'admin:index' %}">Admin</a></li>
+                            {% endif %}
+                        {% else %}
+                            <li><a href="#">기타서비스</a></li>
+                            <li><a href="{% url 'login' %}">Login</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
-</header>
+    </header>
 {% endblock %}
-{% block content %}{% endblock %}
+
+{% block content %}
+{% endblock %}
+
 {% block footer %}
     <footer class="section section-primary">
         <div class="container">
@@ -71,6 +71,5 @@
         </div>
     </footer>
 {% endblock %}
-
 </body>
 </html>
