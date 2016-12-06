@@ -1,6 +1,6 @@
 #!/bin/bash
-python manage.py migrate                  # Apply database migrations
-python manage.py collectstatic --noinput  # Collect static files
+python3 manage.py migrate                  # Apply database migrations
+python3 manage.py collectstatic --noinput  # Collect static files
 
 # Prepare log files and start outputting logs to stdout
 touch /srv/logs/gunicorn.log
@@ -11,7 +11,7 @@ tail -n 0 -f /srv/logs/*.log &
 echo Starting nginx
 cp ../dbp /etc/nginx/sites-available/dbp
 ln -s /etc/nginx/sites-available/dbp /etc/nginx/sites-enabled
-systemctl start nginx
+service nginx start
 
 # Start Gunicorn processes
 echo Starting Gunicorn.
