@@ -4,21 +4,36 @@
 
 {% load staticfiles %}
 {% block content %}
-<div id="content">
-<div id="content">
-    <div class="user-picture-detail">
-        <img src="{{ object.picture }}" />
+    <div id="content" class="container">
+        <div class="user-picture-detail">
+            {% if alumni.open_picture and alumni.picture %}
+                <img src="{{ alumni.picture.url }}" />
+            {% else %}
+                <img src="{% static "/images/etc/unknown.png" %}" />
+            {% endif %}
+        </div>
+        <div class="user-info-detail">
+            <li>이름 : {{ alumni }}</li>
+            <li>기수 : {{ alumni.period }}기</li>
+            {% if alumni.open_email %}
+            <li>이메일 : {{ alumni.email }}</li>
+            {% endif %}
+            {% if alumni.open_login_id %}
+            <li>핸드폰번호 : {{ alumni.login_id }}</li>
+            {% endif %}
+            <li>직책 : {{ alumni.position }}</li>
+            {% if alumni.open_login_id %}
+            <li>총동문회 직책 : {{ alumni.position_all }}</li>
+            {% endif %}
+            {% if alumni.open_work and alumni.work %}
+            <li>직장 : {{ alumni.work }}</li>
+            {% endif %}
+            {% if alumni.open_work_phone and alumni.work_phone %}
+            <li>직장 전화번호 : {{ alumni.work_phone }}</li>
+            {% endif %}
+            {% if alumni.open_work_position and alumni.work_position %}
+            <li>직장 직위 : {{ alumni.work_position }}</li>
+            {% endif %}
+        </div>
     </div>
-    <div class="user-info-detail">
-        <li>{{ object }}</li>
-        <li>{{ object.period }}기</li>
-        <li>{{ object.email }}</li>
-        <li>{{ object.login_id }}</li>
-        <li>{{ object.position }}</li>
-        <li>{{ object.position_all }}</li>
-        <li>{{ object.work }}</li>
-        <li>{{ object.work_phone }}</li>
-        <li>{{ object.work_position }}</li>
-    </div>
-</div>
 {% endblock %}

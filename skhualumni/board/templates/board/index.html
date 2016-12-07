@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %}자유게시판{% endblock %}
+
+{% block content %}
+<div id="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <content>
+                <h1>자유게시판</h1>
+                    <div class="section">
+                        <div class="container">
+                            <table cellspacing="0" border="1" summary="게시판의 글제목 리스트" class="tbl_type">
+                                <caption>자유 게시판</caption>
+                                <colgroup>
+                                    <col width="80">
+                                    <col>
+                                    <col width="115">
+                                    <col width="85">
+                                    <col width="60">
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <th scope="col">No</th>
+                                    <th scope="col">제목</th>
+                                    <th scope="col">작성자</th>
+                                    <th scope="col">작성일</th>
+                                    <th scope="col">조회수</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for post in post_list %}
+                                    <tr>
+                                        <td class="num">{{ post.pk }}</td>
+                                        <td class="title">
+                                            <a href="{% url "board:post_detail" post.pk %}">{{ post.title }}</a>
+                                        </td>
+                                        <td>
+                                            <a href="#">작성자 수정중</a>
+                                        </td>
+                                        <td class="date">{{ post.created_at }}</td>
+                                        <td class="hit">아직 구현 안함</td>
+                                    </tr>
+                                {% endfor %}
+
+                                </tbody>
+                            </table>
+                            <div>
+                                    <ul class="pagination" style="position:center">
+                                        <li>
+                                            <a href="#">Prev</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">1</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">2</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">3</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">4</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">5</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Next</a>
+                                        </li>
+                                    </ul>
+                                <ul class="btn btn-primary" style="float:right">글쓰기</ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </content>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

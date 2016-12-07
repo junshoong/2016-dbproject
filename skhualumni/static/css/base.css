@@ -3,6 +3,7 @@ div#header {
     height:180px;
     background-color:#80b195;
 }
+
 .maintitile {
     width:360px;
     height:180px;
@@ -18,4 +19,36 @@ div#menu li {
     display:inline-block;
 }
 
+.user-box {
+    border: solid 1px skyblue;
+    margin: 10px;
+}
+
+.user-box div {
+    padding-right: 20px;
+    display: inline-block;
+}
+
+.cover-image {
+    background-image: url("/static/images/main_background.jpg");
+}
+
+
+/* for board tables */
+legend{display:none}
+.tbl_type,.tbl_type th,.tbl_type td{border:0}
+.tbl_type{width:100%;border-top:1px solid #999;border-bottom:1px solid #999;color:#666;font-size:12px;table-layout:fixed}
+.tbl_type caption{display:none}
+.tbl_type th{padding:5px 0 4px;border-bottom:solid 1px #d2d2d2;background-color:#f1f1f4;color:#333;font-weight:bold;line-height:18px;vertical-align:top}
+.tbl_type td{padding:8px 0 5px 10px;border-bottom:solid 1px #d2d2d2;text-align:left}
+.tbl_type td.cont{padding:20px;line-height:1.4em}
+.tbl_type2{width:100%;margin-top:15px;border-top:1px solid #999;border-bottom:1px solid #999;color:#666;font-size:12px;table-layout:fixed}
+.tbl_type2,.tbl_type2 th,.tbl_type2 td{border:0}
+.tbl_type2 caption{display:none}
+.tbl_type2 td{padding:5px 0 3px 10px;line-height:1.4em;text-align:left}
+.tbl_type2 .input_txt td{padding:5px 0 5px 10px;border-bottom:solid 1px #d2d2d2}
+.tbl_type2 .input_txt td input,.tbl_type2 .input_txt td textarea{vertical-align:middle}
+.tbl_type2 .input_txt input.name{width:100px;padding:2px 0 1px;border:solid 1px #d2d2d2}
+.tbl_type2 .input_txt textarea.comment{width:80%;height:14px;padding:2px 0 1px;border:solid 1px #d2d2d2}
+.tbl_type2 .input_txt input.submit{width:60px;border:solid 1px #666;background-color:#f2f2f2;font-size:12px;line-height:normal}
 

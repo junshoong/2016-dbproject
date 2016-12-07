@@ -4,7 +4,75 @@
 
 {% load staticfiles %}
 {% block content %}
-<div id="content">
 
+<!-- 메인 숲 사진 -->
+<div class="cover">
+    <div class="cover-image">
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h1>성공회대학교 인문학습원임을 알려주는 문구
+                    <br>
+                </h1>
+                <p>접속을 환영하는 그런 느낌의 문구</p>
+                <br>
+                <br>
+            </div>
+        </div>
+    </div>
 </div>
+
+<!-- 공지사항 / 자유게시판 프리뷰 -->
+<div class="section">
+      <div class="container">
+        <ul class="row">
+          <div class="section_ul; col-md-6">
+            <h2>공지사항</h2>
+            <ul>
+              <li>
+                <span class="bu">›</span>
+                <a href="#">12월 공지사항</a>
+                <span class="time">2016.12.01</span>
+              </li>
+              <li>
+                <span class="bu">›</span>
+                <a href="#">09월 공지사항</a>
+                <span class="time">2016.09.24</span>
+              </li>
+              <li>
+                <span class="bu">›</span>
+                <a href="#">07월 공지사항</a>
+                <span class="time">2016.06.04</span>
+              </li>
+              <li>
+                <span class="bu">›</span>
+                <a href="#">06월 공지사항</a>
+                <span class="time">2016.06.08</span>
+              </li>
+              <li>
+                <span class="bu">›</span>
+                <a href="#">03월 공지사항</a>
+                <span class="time">2016.03.02</span>
+              </li>
+            </ul>
+            <a href="#" class="more"><span>›</span>더보기</a>
+          </div>
+          < class="section_ul; col-md-6">
+            <h2>자유게시판</h2>
+                <ul>
+                    {% for post in post_list %}
+                        <li>
+                            <span class="bu">›</span>
+                            <a href="{% url "board:post_detail" post.pk %}">{{ post.title }}</a>
+                            <span class="time">{{ post.created_at }}</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+            <a href="{% url "board:index" %}" class="more"><span>›</span>더보기</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
 {% endblock %}

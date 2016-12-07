@@ -4,17 +4,22 @@
 
 {% load staticfiles %}
 {% block content %}
-<div id="content">
+<div id="content" class="container">
 
+    <div class="page-header">
+        <hr style="background-color:#000000">
+        <h1>인사말</h1>
+        <hr style="background-color:#000000">
+    </div>
     {% for obj in greeting %}
-        <h1>{{ obj.title }}<h2>
-        <p>{{ odj.modified_date }}</p>
-        <div>
-            {% if obj.image %}
-            <img src="{{ obj.image.url }}" />
-            {% endif %}
-            <p>{{ obj.contents|linebreaks  }}</p>
-        </div>
+
+    <p>{{ odj.modified_date }}</p>
+    <div>
+        {% if obj.image %}
+        <img src="{{ obj.image.url }}" /><br/>
+        {% endif %}
+        <p>{{ obj.contents|linebreaks  }}</p>
+    </div>
     {% endfor %}
 </div>
 {% endblock %}

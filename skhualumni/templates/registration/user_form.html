@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% block title %}마이페이지{% endblock %}
+
+{% block content %}
+    <div id="content" class="container">
+
+        <h1>마이페이지</h1>
+
+        <form id="update_user" action="." method="POST" enctype="multipart/form-data">{% csrf_token %}
+
+            <fieldset form="update_user">
+                <legend>회원정보 수정</legend>
+                <table class="table table-bordered">
+                    <tr>
+                        <th>구분</th>
+                        <th>내용</th>
+                        <th>공개여부</th>
+                    </tr>
+                    <tr>
+                        <td>ID (휴대전화)</td>
+                        <td>{{ object.login_id }}</td>
+                        <td>{{ form.open_login_id }}</td>
+                    </tr>
+                <tr>
+                    <td>비밀번호</td>
+                    <td>
+                        <a class="btn btn-primary" href="{% url 'password_change' %}">변경 </a>
+                        <a class="btn btn-primary" href="#">초기화</a>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td>이름</td>
+                        <td>{{ object.name }}</td>
+                    </tr>
+                    <tr>
+                        <td>기수</td>
+                        <td>{{ object.period }} 기 </td>
+                    </tr>
+                    <tr>
+                        <td>프로필 사진</td>
+                        <td>
+                            {% if object.picture %}
+                                <img src="{{ object.picture.url }}" />
+                            {% endif %}
+                            <br />
+                            {{ form.picture }}
+                        </td>
+                        <td>
+                            {{ form.open_picture }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>동문회 직책</td>
+                        <td>{{ form.position }}</td>
+                    </tr>
+                    <tr>
+                        <td>총동문회 직책</td>
+                        <td>{{ object.position_all }}</td>
+                    </tr>
+                    <tr>
+                        <td>이메일</td>
+                        <td>{{ form.email }}</td>
+                        <td>{{ form.open_email }}</td>
+                    </tr>
+                    <tr>
+                        <td>직장</td>
+                        <td>{{ form.work }}</td>
+                        <td>{{ form.open_work }}</td>
+                    </tr>
+                    <tr>
+                        <td>직장 직위</td>
+                        <td>{{ form.work_position }}</td>
+                        <td>{{ form.open_work_position }}</td>
+                    </tr>
+                    <tr>
+                        <td>직장 전화</td>
+                        <td>{{ form.work_phone }}</td>
+                        <td>{{ form.open_work_phone }}</td>
+                    </tr>
+                </table>
+
+            </fieldset>
+            {% if form.errors %}
+                <p class="errornote">올바른 값을 입력해주세요!</p>
+            {% endif %}
+
+            <div class="submit-row">
+                <input type="submit" value="수정" />
+                <a class="btn btn-primary" href="{% url 'home' %}">홈으로</a>
+            </div>
+
+            <script type="text/javascript">
+                document.getElementById('id_name').focus();
+            </script>
+        </form>
+
+    </div>
+{% endblock %}

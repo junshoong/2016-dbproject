@@ -37,10 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Added apps
     'alumni.apps.AlumniConfig',
     'board',
+    'notice',
     'info.apps.InfoConfig',
 ]
+
+AUTH_USER_MODEL = "alumni.User"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -109,7 +113,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ko-kr'
+
 
 # TIME_ZONE = 'UTC'
 TIME_ZONE = 'Asia/Seoul'
@@ -125,9 +130,27 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 # Media files (like User upload images)
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# for Auth
+
+LOGIN_URL = '/login/'
+LOGOUT = '/logout/'
+LOGIN_REDIRECT_URL = '/'
+
+# send email for forgot password
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'team.kimkongko@gmail.com'
+EMAIL_HOST_PASSWORD = 'qq12341234'
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'team.kimkongko@gmail.com'
+SERVER_EMAIL = EMAIL_HOST_USER

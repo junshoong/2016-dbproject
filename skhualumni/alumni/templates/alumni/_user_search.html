@@ -1,0 +1,8 @@
+{# templates/alumni/_user_search.html #}
+{% comment %}
+    Usage: {% include "alumni/_user_search.html" %}
+{% endcomment %}
+<form action="{% url 'alumni:index' %}" method="GET">
+    <input type="text" name="q" />
+    <button type="submit">search</button>
+</form>

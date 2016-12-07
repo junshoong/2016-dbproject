@@ -15,12 +15,18 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from skhualumni.views import HomeView
+from django.conf.urls.static import static
+from django.conf import settings
+from skhualumni.views import HomeView, UserUpdateView
 
 urlpatterns = [
     url(r'^$', HomeView.as_view(), name='home'),
+    # login, logout, password_change
+    url(r'^', include('django.contrib.auth.urls')),
+    url(r'^my_page/$', UserUpdateView.as_view(), name='my_page'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^board/', include('board.urls', namespace='board')),
+    url(r'^notice/', include('notice.urls', namespace='notice')),
     url(r'^alumni/', include('alumni.urls', namespace='alumni')),
     url(r'^info/', include('info.urls', namespace='info')),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block content %}
+        <div class="section">
+            <div class="container">
+                <table cellspacing="0" border="1" summary="글 내용을 표시" class="tbl_type">
+                    <caption>글 읽기</caption>
+                    <colgroup>
+                        <col width="80"><col><col width="80">
+                        <col width="150"><col width="80"><col width="150">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th scope="row">제목</th>
+                        <td colspan="5">{{ post.title }}</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">작성자</th>
+                        <td>{{ post.writer }}</td>
+                        <th scope="row">작성일</th>
+                        <td> {{ post.created_at }} </td>
+                        <th scope="row">조회</th>
+                        <td>1234</td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" class="cont">
+                            <div>
+                                {% if post.photo %}
+                                    <img src="{{ post.photo.url}}" />
+                                {% endif%}
+                            </div>
+                            <span> {{ post.content | linebreaksbr }} </span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <form name="" action="method">
+                    <fieldset>
+                        <legend>댓글</legend>
+                        <table cellspacing="0" border="1" summary="글 내용에 대한 덧글 표시" class="tbl_type2">
+                            <caption>글에대한 댓글</caption>
+                            <colgroup>
+                                <col width="110">
+                                <col>
+                            </colgroup>
+                            <tbody>
+                            <tr class="input_txt">
+                                <td><input type="text" title="이름" name="" value="" class="name"></td>
+                                <td><textarea cols="65" rows="5" name="" class="comment"></textarea>
+                                    <input type="submit" title="입력" value="입력" class="submit">
+                                    <a href="{% url "notice:comment_new" post.pk %}">댓글 작성</a>
+                                </td>
+                            </tr>
+                            {% for comment in post.comment_set.all %}
+                                <tr>
+                                    <td> {{ comment.author }} </td>
+                                    <td> {{ comment.message }} </td>
+                                    <td> {{ comment.created_at }} </td>
+                                </tr>
+                                <a href="{% url "notice:comment_edit" post.pk comment.pk %}">수정</a>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+{% endblock %}
