@@ -4,17 +4,23 @@
 
 {% load staticfiles %}
 {% block content %}
-<content>
     <div class="section">
         <div class="container">
-            <div class="section">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="page-header">
-                                <h1>동문회</h1>
-                            </div>
-                        </div>
+            <div class="row">
+                <div class="navbar">
+                    <ul class="nav navbar-nav navbar-collapse">
+                    <li><a href="{% url 'alumni:index' %}">동문목록</a></li>
+                    <li><a href="{% url 'alumni:executive' %}">임원목록</a></li>
+                    </ul>
+                </div>
+                <hr>
+                <div class="col-md-12">
+                    <div class="page-header">
+                        {% if request.path == '/alumni/' %}
+                        <h1>동문 목록</h1>
+                        {% elif request.path == '/alumni/executive/' %}
+                        <h1>임원 목록</h1>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -28,37 +34,36 @@
                 </div>
             </div>
             {% for user in object_list %}
-            {% if forloop.counter|divisibleby:2 %}
-            <div class="row">
+                {% if forloop.counter|divisibleby:2 %}
+                    <div class="row">
                 {% endif %}
 
-                <a href="{% url 'alumni:detail' user.id %}">
-                    <div class="col-md-2">
-                        {% if user.open_picture and user.picture %}
+            <a href="{% url 'alumni:detail' user.id %}">
+                <div class="col-md-2">
+                    {% if user.open_picture and user.picture %}
                         <img class="img-circle img-responsive" src="{{ user.picture.url }}" />
-                        {% else %}
-                        <img class="img-circle img-responsive" src="{% static "/images/etc/unknown.png" %}" />
-                        {% endif %}
-                    </div>
-                </a>
-                <div class="col-md-4">
-                    <h3 class="text-left">{{ user }}</h3>
-                    <p class="text-left">{{ user.period }} / {{ user.position }}</p>
-                    {% if user.open_login_id %}
+                    {% else %}
+                        <img class="img-circle img-responsive" src="{% static "images/etc/unknown.png" %}" />
+                    {% endif %}
+                </div>
+            </a>
+            <div class="col-md-4">
+                <h3 class="text-left">{{ user }}</h3>
+                <p class="text-left">{{ user.period }} / {{ user.position }}</p>
+                {% if user.open_login_id %}
                     <p class="text-left">
-                        <a href="tel:{{ user.login_id }}">{{ user.login_id }}</a>
-                        {% endif %}
-                        {% if user.open_email %}
+                    <a href="tel:{{ user.login_id }}">{{ user.login_id }}</a>
+                {% endif %}
+                {% if user.open_email %}
                     <p class="text-left">
                         <a href="mailto:{{ user.email }}">{{ user.email }}</a>
                     </p>
-                    {% endif %}
-                </div>
-                {% if forloop.counter|divisibleby:2 %}
+                {% endif %}
             </div>
+            {% if forloop.counter|divisibleby:2 %}
+                </div>
             {% endif %}
             {% endfor %}
         </div>
     </div>
-</content>
 {% endblock %}
