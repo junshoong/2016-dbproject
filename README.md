@@ -97,6 +97,36 @@ $ ./manage.py migrate
 
 이후에 모든 팀원이 확인이 되면 merge를 진행합니다.
 
+### Deploy
+
+배포 관련내용 입니다.
+```bash
+apt install docker.io git
+git clone https://gitlab.com/vaporize93/2016_db_project
+cd 2016_db_project
+
+docker pull mysql
+docker run --name db -e MYSQL_ROOT_PASSWORD=qq1234 -d mysql
+docker exec -it db bash
+# mysql -uroot -p
+> CREATE DATABASE skhualumni CHARACTER SET UTF8;
+> exit;
+# exit
+
+docker build -t harvey/dbp .
+docker run --name=skhudbp \
+    --publish=80:80 \
+    --link db:db \
+    --env="DJANGO_SETTINGS_MODULE=skhualumni.production_settings" \
+    --env="MYSQL_ROOT_PASSWORD=qq1234" \
+    --env="PYTHONIOENCODING=UTF-8" \
+    -d harvey/dbp
+
+docker exec -it skhudbp bash
+# python3 manage.py createsuperuser
+# exit
+```
+
 
 ## Member
 공원배
