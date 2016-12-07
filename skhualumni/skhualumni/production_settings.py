@@ -3,6 +3,8 @@ from skhualumni.settings import *
 DEBUG = False
 ALLOWED_HOSTS = ['dbp.harveyk.me', 'localhost', ]
 
+STATIC_ROOT = '/srv/static/'
+
 # Database
 DATABASES = {
     'default': {
