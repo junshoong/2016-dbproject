@@ -21,6 +21,7 @@ class UserSearchMixin(object):
 
 class UserLV(UserSearchMixin, ListView):
     model = User
+    ordering = ["-period", ]
 
 
 class ExecutiveLV(UserLV):

@@ -9,17 +9,17 @@
             <div class="row">
                 <div class="navbar">
                     <ul class="nav navbar-nav navbar-collapse">
-                    <li><a href="{% url 'alumni:index' %}">동문목록</a></li>
-                    <li><a href="{% url 'alumni:executive' %}">임원목록</a></li>
+                        <li><a href="{% url 'alumni:index' %}">동문목록</a></li>
+                        <li><a href="{% url 'alumni:executive' %}">임원목록</a></li>
                     </ul>
                 </div>
                 <hr>
                 <div class="col-md-12">
                     <div class="page-header">
                         {% if request.path == '/alumni/' %}
-                        <h1>동문 목록</h1>
+                            <h1>동문 목록</h1>
                         {% elif request.path == '/alumni/executive/' %}
-                        <h1>임원 목록</h1>
+                            <h1>임원 목록</h1>
                         {% endif %}
                     </div>
                 </div>
@@ -27,13 +27,15 @@
             <div id="user-search">
                 {% include "alumni/_user_search.html" %}
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <h1 class="text-center">16기</h1>
-                    <p class="text-center">16기임을 보여주는 그런 느낌의 문구</p>
-                </div>
-            </div>
             {% for user in object_list %}
+                {% ifchanged user.period %}
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2 class="text-center">{{ user.period }}기</h2>
+                        </div>
+                    </div>
+                    <hr style="border: solid black 1px;">
+                {% endifchanged %}
                 {% if forloop.counter|divisibleby:2 %}
                     <div class="row">
                 {% endif %}
@@ -49,7 +51,7 @@
             </a>
             <div class="col-md-4">
                 <h3 class="text-left">{{ user }}</h3>
-                <p class="text-left">{{ user.period }} / {{ user.position }}</p>
+                <p class="text-left">{{ user.period }}기 / {{ user.position }}</p>
                 {% if user.open_login_id %}
                     <p class="text-left">
                     <a href="tel:{{ user.login_id }}">{{ user.login_id }}</a>
