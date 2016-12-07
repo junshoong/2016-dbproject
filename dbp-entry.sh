@@ -7,6 +7,13 @@ touch /srv/logs/gunicorn.log
 touch /srv/logs/access.log
 tail -n 0 -f /srv/logs/*.log &
 
+# Start nginx processes
+echo Starting nginx
+cp ../dbp /etc/nginx/sites-available/dbp
+ln -s /etc/nginx/sites-available/dbp /etc/nginx/sites-enabled/
+rm /etc/nginx/sites-enabled/default
+service nginx start
+
 # Start Gunicorn processes
 echo Starting Gunicorn.
 exec gunicorn skhualumni.wsgi:application \
@@ -18,9 +25,3 @@ exec gunicorn skhualumni.wsgi:application \
     --access-logfile=/srv/logs/access.log \
     "$@"
 
-# Start nginx processes
-echo Starting nginx
-cp ../dbp /etc/nginx/sites-available/dbp
-ln -s /etc/nginx/sites-available/dbp /etc/nginx/sites-enabled/
-rm /etc/nginx/sites-enbled/default
-service nginx start
