@@ -9,6 +9,10 @@ server {
                 alias /srv/static;
         }
 
+        location /media {
+                alias /srv/dbp/skhualumni/media;
+        }
+
         location / {
                 include proxy_params;
                 proxy_pass http://unix:/srv/dbp.sock;
