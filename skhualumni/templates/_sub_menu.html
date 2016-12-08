@@ -1,0 +1,32 @@
+{# templates/_sub_menu.html #}
+{% comment %}
+    Usage: {% include "_sub_menu.html" %}
+{% endcomment %}
+{% if "/info/" in request.path %}
+<div class="navbar">
+    <ul class="nav navbar-nav navbar-collapse">
+        <li><a href="{% url 'info:greeting' %}">인사말</a></li>
+        <li><a href="{% url 'info:business' %}">사업소개</a></li>
+        <li><a href="{% url 'info:organization' %}">조직소개</a></li>
+        <li><a href="{% url 'info:map' %}">오시는길</a></li>
+        <li><a href="{% url 'info:usage' %}">이용안내</a></li>
+    </ul>
+</div>
+
+{% elif "/board/" in request.path %}
+    <div class="navbar">
+        <ul class="nav navbar-nav navbar-collapse">
+            <li><a href="{% url 'board:index' %}">자유게시판</a></li>
+        </ul>
+    </div>
+
+{% elif "/alumni/" in request.path %}
+    <div class="navbar">
+        <ul class="nav navbar-nav navbar-collapse">
+            <li><a href="{% url 'alumni:index' %}">임원목록</a></li>
+            <li><a href="{% url 'alumni:executive' %}">임원목록</a></li>
+        </ul>
+    </div>
+{% else %}
+{% endif %}
+

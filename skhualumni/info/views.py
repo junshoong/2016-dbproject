@@ -4,30 +4,35 @@ from info.models import Info
 
 def render_greeting(request):
     greeting = Info.objects.filter(category='GRT')
-    context = {'greeting': greeting}
+    greeting = greeting.first()
+    context = {'obj': greeting}
     return render(request, 'info/greeting.html', context)
 
 
 def render_business(request):
     business = Info.objects.filter(category='BSN')
-    context = {'business': business}
+    business = business.first()
+    context = {'obj': business}
     return render(request, 'info/business.html', context)
 
 
 def render_organization(request):
     organization = Info.objects.filter(category='ORG')
-    context = {'organization': organization}
+    organization = organization.first()
+    context = {'obj': organization}
     return render(request, 'info/organization.html', context)
 
 
 def render_map(request):
     map = Info.objects.filter(category='MAP')
-    context = {'map': map}
+    map = map.first()
+    context = {'obj': map}
     return render(request, 'info/map.html', context)
 
 
 def render_usage(request):
     usage = Info.objects.filter(category='USE')
-    context = {'usage': usage}
+    usage = usage.first()
+    context = {'obj': usage}
     return render(request, 'info/usage.html', context)
 
