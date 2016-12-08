@@ -33,13 +33,29 @@ div#menu li {
     background-image: url("/static/images/main_background.jpg");
 }
 
+.th{
+    text-align:center;
+}
 
+/* for footer test */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.content {
+  min-height: 100%;
+}
+
+.footer {
+  height: 200px;
+
+}
 /* for board tables */
 legend{display:none}
 .tbl_type,.tbl_type th,.tbl_type td{border:0}
 .tbl_type{width:100%;border-top:1px solid #999;border-bottom:1px solid #999;color:#666;font-size:12px;table-layout:fixed}
 .tbl_type caption{display:none}
-.tbl_type th{padding:5px 0 4px;border-bottom:solid 1px #d2d2d2;background-color:#f1f1f4;color:#333;font-weight:bold;line-height:18px;vertical-align:top}
+.tbl_type th{padding:5px 0 4px;border-bottom:solid 1px #d2d2d2;background-color:#f1f1f4;color:#333;font-weight:bold;line-height:18px;vertical-align:top;text-align:center}
 .tbl_type td{padding:8px 0 5px 10px;border-bottom:solid 1px #d2d2d2;text-align:left}
 .tbl_type td.cont{padding:20px;line-height:1.4em}
 .tbl_type2{width:100%;margin-top:15px;border-top:1px solid #999;border-bottom:1px solid #999;color:#666;font-size:12px;table-layout:fixed}
