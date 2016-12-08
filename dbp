@@ -1,4 +1,5 @@
 server {
+        charset utf-8;
         listen 80;
         server_name dbp.harveyk.me;
 
@@ -6,6 +7,10 @@ server {
 
         location /static {
                 alias /srv/static;
+        }
+
+        location /media {
+                alias /srv/dbp/skhualumni/media;
         }
 
         location / {
