@@ -49,32 +49,27 @@
                                 </tbody>
                             </table>
                             <center>
-                                <div>
-                                        <ul class="pagination" style="position:center">
-                                            <li>
-                                                <a href="#">Prev</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">1</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">2</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">3</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">4</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">5</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Next</a>
-                                            </li>
-                                        </ul>
-                                    <ul class="btn btn-default" style="float:right">글쓰기</ul>
-                                </div>
+                                <ul class="pagination" style="position:center">
+                                    <span class="step-links">
+                                        {% if post_list.has_previous %}
+                                            <a href="?page={{ post_list.previous_page_number }}">previous</a>
+                                        {% endif %}
+
+                                    <span class="current">
+                                            Page <a href="?page={{ post_list.number }}">{{ post_list.number }}</a> of
+                                        <a href="?page={{ post_list.paginator.num_pages }}">{{ post_list.paginator.num_pages }}</a>
+                                    </span>
+
+                                    <a href="?page=">{{ post_list.Paginator.count }}</a>
+                                        {% if post_list.has_next %}
+                                            <a href="?page={{ post_list.next_page_number }}">next</a>
+                                        {% endif %}
+                                    </span>
+
+                                </ul>
+                                <ul class="btn btn-primary" style="float:right">
+                                    <a href="{% url 'notice:post_new' %}">글쓰기</a>
+                                </ul>
                             </center>
                         </div>
                     </div>

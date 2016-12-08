@@ -4,6 +4,7 @@ from django.core.urlresolvers import reverse
 
 class Post(models.Model):
     title = models.CharField(max_length=50)
+    writer = models.CharField(max_length=10, null=True)
     content = models.TextField(max_length=10000)
     photo = models.ImageField(blank=True, null=True, upload_to='FreeBoard/%Y/%m/%d')
     created_at = models.DateTimeField(auto_now_add=True)
@@ -22,7 +23,7 @@ class Post(models.Model):
 
 class Comment(models.Model):
     post = models.ForeignKey(Post)
-    author = models.CharField(max_length=10)
+    author = models.CharField(max_length=10, null=True)
     message = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
