@@ -52,3 +52,14 @@ legend{display:none}
 .tbl_type2 .input_txt textarea.comment{width:80%;height:14px;padding:2px 0 1px;border:solid 1px #d2d2d2}
 .tbl_type2 .input_txt input.submit{width:60px;border:solid 1px #666;background-color:#f2f2f2;font-size:12px;line-height:normal}
 
+/* for tab menu */
+.tab2{position:relative;left:5%;height:29px;margin-top:20px;background:url(http://static.naver.com/groupware/common/tab_menu.gif) repeat-x 0 100%;font-family:'돋움',dotum;font-size:12px}
+.tab2 ul,.tab2 ul li{margin:0;padding:0}
+.tab2 ul li{list-style:none}
+.tab2 ul li,.tab2 ul li a{background:url(http://static.naver.com/groupware/2010/bg_tab2_off.gif) no-repeat}
+.tab2 ul li{float:left;margin-right:-1px;line-height:26px}
+.tab2 ul li a{display:inline-block;padding:2px 16px 1px;_padding:3px 16px 0;background-position: 100% 0;font-weight:bold;color:#666;text-decoration:none !important}
+.tab2 ul li a:hover{color:#000}
+.tab2 ul li.on,.tab2 ul li.on a{background-image:url(http://static.naver.com/groupware/2010/bg_tab2_on.gif)}
+.tab2 ul li.on a{color:#3376b8}
+
