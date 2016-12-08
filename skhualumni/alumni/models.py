@@ -53,6 +53,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     last_login = models.DateTimeField('마지막 로그인', auto_now=True, blank=True)
     is_active = models.BooleanField('사용여부', default=True)
     is_admin = models.BooleanField('관리자', default=False)
+    is_first_login = models.BooleanField('최초로그인여부', default=True)
     # open or not
     open_login_id = models.BooleanField('핸드폰 번호 공개여부', default=False)
     open_email = models.BooleanField('이메일 공개여부', default=False)

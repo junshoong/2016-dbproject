@@ -18,10 +18,14 @@ from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
 from skhualumni.views import HomeView, UserUpdateView
+from skhualumni.forms import CustomPasswordChangeForm
+from django.contrib.auth.views import password_change
 
 urlpatterns = [
     url(r'^$', HomeView.as_view(), name='home'),
     # login, logout, password_change
+    url(r'^password_change/$', password_change,
+        {'password_change_form': CustomPasswordChangeForm}, name="password_change"),
     url(r'^', include('django.contrib.auth.urls')),
     url(r'^my_page/$', UserUpdateView.as_view(), name='my_page'),
     url(r'^admin/', include(admin.site.urls)),
