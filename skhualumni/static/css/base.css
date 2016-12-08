@@ -37,6 +37,19 @@ div#menu li {
     text-align:center;
 }
 
+/* for footer test */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.content {
+  min-height: 100%;
+}
+
+.footer {
+  height: 200px;
+
+}
 /* for board tables */
 legend{display:none}
 .tbl_type,.tbl_type th,.tbl_type td{border:0}
