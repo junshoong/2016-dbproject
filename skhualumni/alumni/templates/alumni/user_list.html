@@ -7,13 +7,6 @@
     <div class="section">
         <div class="container">
             <div class="row">
-                <div class="navbar">
-                    <ul class="nav navbar-nav navbar-collapse">
-                        <li><a href="{% url 'alumni:index' %}">동문목록</a></li>
-                        <li><a href="{% url 'alumni:executive' %}">임원목록</a></li>
-                    </ul>
-                </div>
-                <hr>
                 <div class="col-md-12">
                     <div class="page-header">
                         {% if request.path == '/alumni/' %}
