@@ -5,7 +5,7 @@
 {% load staticfiles %}
 {% block content %}
     <div id="content" class="container">
-        <div class="user-picture-detail">
+        <div class="user-picture-detail" style="float:left">
             {% if alumni.open_picture and alumni.picture %}
                 <img src="{{ alumni.picture.url }}" />
             {% else %}
