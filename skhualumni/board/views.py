@@ -78,7 +78,7 @@ def post_new(request):
         form = PostEditForm(request.POST, request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
-            post.author = request.user
+            post.writer = request.user
             post.save()
             return redirect('board:post_detail', pk=post.pk)
     else:

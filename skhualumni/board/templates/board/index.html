@@ -39,7 +39,7 @@
                                             <a href="{% url "board:post_detail" post.pk %}">{{ post.title }}</a>
                                         </td>
                                         <td>
-                                            <a href="#">작성자 수정중</a>
+                                            {{ post.writer }}
                                         </td>
                                         <td class="date">{{ post.created_at }}</td>
                                         <td class="hit">아직 구현 안함</td>
@@ -68,7 +68,7 @@
 
                                 </ul>
                                 <ul class="btn btn-primary" style="float:right">
-                                    <a href="{% url 'notice:post_new' %}">글쓰기</a>
+                                    <a href="{% url 'board:post_new' %}">글쓰기</a>
                                 </ul>
                             </center>
                         </div>
