@@ -1,10 +1,20 @@
 from django import forms
 from django.contrib import admin
 from django.contrib.auth.models import Group
-from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
+from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
+from import_export import resources
+from import_export.admin import ImportExportMixin
 
 from alumni.models import User
+
+
+class UserResource(resources.ModelResource):
+
+    class Meta:
+        model = User
+        skip_unchanged = True   # 바뀌지 않은 것음 skip
+        report_skipped = False  # skip된것에 대한 미리보기
 
 
 class UserCreationForm(forms.ModelForm):
@@ -48,7 +58,8 @@ class UserChangeForm(forms.ModelForm):
         return self.initial["password"]
 
 
-class UserAdmin(BaseUserAdmin):
+class UserAdmin(ImportExportMixin, BaseUserAdmin):
+    resource_class = UserResource
     form = UserChangeForm
     add_form = UserCreationForm
 

@@ -4,6 +4,7 @@ from django.db.models import Q
 from .models import Post, Comment
 from .forms import CommentForm, PostEditForm, PostSearchForm
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 rows_per_page = 2
 
@@ -11,6 +12,17 @@ rows_per_page = 2
 @login_required
 def index(request):
     post_list = Post.objects.all()
+
+    paginator = Paginator(post_list, 10)
+
+    page = request.GET.get('page')
+    try:
+        post_list = paginator.page(page)
+    except PageNotAnInteger:
+        post_list = paginator.page(1)
+    except EmptyPage:
+        post_list = paginator.page(paginator.num_pages)
+
     return render(request, 'notice/index.html', {
         'post_list': post_list,
     })
@@ -105,3 +117,4 @@ def comment_edit(request, post_pk, pk):
     else:
         form = CommentForm(instance=comment)
     return render(request, 'notice/post_form.html', {'form': form, })
+
