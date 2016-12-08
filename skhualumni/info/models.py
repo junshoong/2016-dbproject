@@ -8,13 +8,14 @@ from django.db import models
 @python_2_unicode_compatible
 class Info(models.Model):
     INFO_CATEGORY = (
-        ('GRT', '인사말'),
+        ('OLD_GRT', '전 원장 인사말'),
+        ('GRT', '현 원장 인사말'),
         ('BSN', '사업안내'),
         ('ORG', '조직안내'),
         ('MAP', '오시는길'),
         ('USE', '이용안내'),
     )
-    category = models.CharField(max_length=3, choices=INFO_CATEGORY)
+    category = models.CharField(max_length=7, choices=INFO_CATEGORY)
     title = models.CharField(max_length=45)
     contents = models.TextField()
     image = models.ImageField(blank=True, upload_to='info/%Y')

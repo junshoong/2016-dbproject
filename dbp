@@ -1,11 +1,16 @@
 server {
+        charset utf-8;
         listen 80;
         server_name dbp.harveyk.me;
 
         location = /favicon.ico { access_log off; log_not_found off; }
 
         location /static {
-                root /srv/dbp/skhualumni/static;
+                alias /srv/static;
+        }
+
+        location /media {
+                alias /srv/dbp/skhualumni/media;
         }
 
         location / {
