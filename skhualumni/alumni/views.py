@@ -21,11 +21,13 @@ class UserSearchMixin(object):
 
 class UserLV(UserSearchMixin, ListView):
     model = User
+    queryset = User.objects.filter(is_admin=False)
     ordering = ["-period", ]
 
 
 class ExecutiveLV(UserLV):
-    queryset = User.objects.exclude(position='일반회원')
+    queryset = User.objects.filter(is_admin=False)
+    queryset = queryset.exclude(position='일반회원')
 
 
 class UserDV(DetailView):
