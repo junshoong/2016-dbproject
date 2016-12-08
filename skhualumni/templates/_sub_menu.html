@@ -3,9 +3,9 @@
     Usage: {% include "_sub_menu.html" %}
 {% endcomment %}
 {% if "/info/" in request.path %}
-<div class="navbar">
+<div class="tab2">
     <ul class="nav navbar-nav navbar-collapse">
-        <li><a href="{% url 'info:greeting' %}">인사말</a></li>
+        <li><a href="{% url 'info:greeting' %}">인 사 말</a></li>
         <li><a href="{% url 'info:business' %}">사업소개</a></li>
         <li><a href="{% url 'info:organization' %}">조직소개</a></li>
         <li><a href="{% url 'info:map' %}">오시는길</a></li>
@@ -14,19 +14,28 @@
 </div>
 
 {% elif "/board/" in request.path %}
-    <div class="navbar">
+    <div class="tab2">
         <ul class="nav navbar-nav navbar-collapse">
             <li><a href="{% url 'board:index' %}">자유게시판</a></li>
+            <li><a href="{% url 'board:index' %}">공지사항</a></li>
         </ul>
     </div>
 
 {% elif "/alumni/" in request.path %}
-    <div class="navbar">
+    <div class="tab2">
         <ul class="nav navbar-nav navbar-collapse">
             <li><a href="{% url 'alumni:index' %}">동문목록</a></li>
             <li><a href="{% url 'alumni:executive' %}">임원목록</a></li>
         </ul>
     </div>
 {% else %}
+<!--
+    <div class="tab2">
+        <ul class="nav navbar-nav navbar-collapse">
+            <li><a href="#">이용안내</a></li>
+            <li><a href="#">사이트맵</a></li>
+        </ul>
+    </div>
+-->
 {% endif %}
 
