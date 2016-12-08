@@ -10,13 +10,24 @@
         </div>
 
         {% if obj %}
-
             <p>{{ odj.modified_date }}</p>
             <div>
                 {% if obj.image %}
-                    <img src="{{ obj.image.url }}" /><br/>
+                    <img src="{{ obj.image.url }}" />
+                    <br/>
                 {% endif %}
                 <p>{{ obj.contents|linebreaks  }}</p>
+            </div>
+        {% endif %}
+
+        {% if old_obj %}
+            <p>{{ old_odj.modified_date }}</p>
+            <div>
+                {% if old_obj.image %}
+                    <img src="{{ old_obj.image.url }}" />
+                    <br/>
+                {% endif %}
+                <p>{{ old_obj.contents|linebreaks  }}</p>
             </div>
         {% endif %}
     </div>

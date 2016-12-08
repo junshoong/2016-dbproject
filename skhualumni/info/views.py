@@ -5,7 +5,9 @@ from info.models import Info
 def render_greeting(request):
     greeting = Info.objects.filter(category='GRT')
     greeting = greeting.first()
-    context = {'obj': greeting}
+    old_greeting = Info.objects.filter(category='OLD_GRT')
+    old_greeting = old_greeting.first()
+    context = {'obj': greeting, 'old_obj': old_greeting}
     return render(request, 'info/greeting.html', context)
 
 

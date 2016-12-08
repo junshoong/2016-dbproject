@@ -10,11 +10,11 @@
         </div>
 
         {% if obj %}
-            <h2>{{ obj.title }}<h2>
             <p>{{ odj.modified_date }}</p>
             <div>
                 {% if obj.image %}
                     <img src="{{ obj.image.url }}" />
+                    <br/>
                 {% endif %}
                 <p>{{ obj.contents|linebreaks  }}</p>
             </div>

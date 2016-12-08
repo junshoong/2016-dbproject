@@ -14,6 +14,7 @@
             <div>
                 {% if obj.image %}
                     <img src="{{ obj.image.url }}" />
+                    <br/>
                 {% endif %}
                 <p>{{ obj.contents|linebreaks  }}</p>
             </div>
