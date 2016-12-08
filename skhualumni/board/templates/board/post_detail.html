@@ -37,7 +37,10 @@
                     </tr>
                     </tbody>
                 </table>
-
+                <tr><a class = "btn btn-default" href="{% url "board:index" %}">목록으로</a>
+                <a class="btn btn-default" href="{% url "board:post_edit" pk=post.pk %}">수정</a>
+                <a class="btn btn-default" href="{% url "board:post_delete" post.pk %}">삭제</a>
+                </tr>
                 <form name="" action="method">
                     <fieldset>
                         <legend>댓글</legend>
@@ -72,6 +75,5 @@
                 </form>
             </div>
         </div>
-    <a class="btn btn-default" href="{% url "board:post_edit" pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-    <a href="{% url "board:post_delete" post.pk %}">삭제</a>
+
 {% endblock %}
