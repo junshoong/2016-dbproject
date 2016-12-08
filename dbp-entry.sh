@@ -1,4 +1,10 @@
 #!/bin/bash
+
+# setting locale
+locale-gen ko_KR.UTF-8
+export LANG='ko_KR.UTF-8'
+export LC_ALL='ko_KR.UTF-8'
+
 python3 manage.py migrate                  # Apply database migrations
 python3 manage.py collectstatic --noinput  # Collect static files
 
