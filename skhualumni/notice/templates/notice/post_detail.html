@@ -3,6 +3,7 @@
 {% block content %}
         <div class="section">
             <div class="container">
+            <h1>공지사항</h1>
                 <table cellspacing="0" border="1" summary="글 내용을 표시" class="tbl_type">
                     <caption>글 읽기</caption>
                     <colgroup>
@@ -36,7 +37,7 @@
                     </tr>
                     </tbody>
                 </table>
-
+                <tr><a href="{% url "notice:index" %}">목록으로</a></tr>
                 <form name="" action="method">
                     <fieldset>
                         <legend>댓글</legend>
@@ -46,21 +47,21 @@
                                 <col width="110">
                                 <col>
                             </colgroup>
+
                             <tbody>
                             <tr class="input_txt">
                                 <td><input type="text" title="이름" name="" value="" class="name"></td>
                                 <td><textarea cols="65" rows="5" name="" class="comment"></textarea>
-                                    <input type="submit" title="입력" value="입력" class="submit">
-                                    <a href="{% url "notice:comment_new" post.pk %}">댓글 작성</a>
-                                </td>
+                                    <input type="submit" title="입력" value="입력" class="submit"></td>
+                                <td><a href="{% url "notice:comment_new" post.pk %}">댓글 작성</a></td>
                             </tr>
                             {% for comment in post.comment_set.all %}
                                 <tr>
                                     <td> {{ comment.author }} </td>
                                     <td> {{ comment.message }} </td>
                                     <td> {{ comment.created_at }} </td>
+                                    <td><a href="{% url "notice:comment_edit" post.pk comment.pk %}">수정</a></td>
                                 </tr>
-                                <a href="{% url "notice:comment_edit" post.pk comment.pk %}">수정</a>
                             {% endfor %}
                             </tbody>
                         </table>
