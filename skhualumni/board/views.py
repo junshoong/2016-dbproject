@@ -4,13 +4,26 @@ from django.db.models import Q
 from .models import Post, Comment
 from .forms import CommentForm, PostEditForm, PostSearchForm
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 rows_per_page = 2
 
 @login_required
 def index(request):
     post_list = Post.objects.all()
-    return render(request, 'board/index.html', {'post_list': post_list, })
+
+    paginator = Paginator(post_list, 10)
+
+    page = request.GET.get('page')
+    try:
+        post_list = paginator.page(page)
+    except PageNotAnInteger:
+        post_list = paginator.page(1)
+    except EmptyPage:
+        post_list = paginator.page(paginator.num_pages)
+
+    return render(request, 'board/index.html',
+                  {'post_list': post_list, })
 
 
 # 글 검색
@@ -65,7 +78,7 @@ def post_new(request):
         form = PostEditForm(request.POST, request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
-            post.author = request.user
+            post.writer = request.user
             post.save()
             return redirect('board:post_detail', pk=post.pk)
     else:

@@ -11,7 +11,7 @@ class CommentForm(forms.ModelForm):
 class PostEditForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = '__all__'
+        fields = ('title', 'content', 'photo',)
 
 
 class PostSearchForm(forms.Form):
