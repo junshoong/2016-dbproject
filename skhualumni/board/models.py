@@ -5,7 +5,7 @@ from django.conf import settings
 
 class Post(models.Model):
     title = models.CharField(max_length=50)
-    writer = models.ForeignKey(settings.AUTH_USER_MODEL)
+    writer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     content = models.TextField(max_length=10000)
     photo = models.ImageField(blank=True, null=True, upload_to='FreeBoard/%Y/%m/%d')
     created_at = models.DateTimeField(auto_now_add=True)
