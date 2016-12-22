@@ -92,6 +92,7 @@ def comment_new(request, pk):
         form = CommentForm(request.POST)
         if form.is_valid():
             comment = form.save(commit=False)
+            comment.author = request.user
             comment.post = Post.objects.get(pk=pk)
             comment.save()
             return redirect('board:post_detail', pk)
@@ -115,3 +116,11 @@ def comment_edit(request, post_pk, pk):
         form = CommentForm(instance=comment)
     return render(request, 'board/post_form.html', {'form': form, })
 
+
+# 댓글 삭제
+@login_required
+def comment_delete(request, post_pk, pk):
+    comment = Comment.objects.get(pk=pk)
+    comment.delete()
+
+    return redirect('board:post_detail', post_pk)
