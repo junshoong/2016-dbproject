@@ -29,9 +29,8 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="{% url 'info:index' %}">기관소개</a></li>
                         {% if user.is_active %}
-                            <li><a href="{% url 'board:index' %}">열림마당</a></li>
+                            <li><a href="{% url 'notice:index' %}">열림마당</a></li>
                             <li><a href="{% url 'alumni:index' %}">동문회</a></li>
-                            <li><a href="#">기타서비스</a></li>
                             <li><a href="{% url 'my_page' %}">마이페이지</a></li>
                             <li><a href="{% url 'logout' %}">Logout</a></li>
                             {% if user.is_admin %}
@@ -65,7 +64,8 @@
                     <h1>성공회대학교</h1>
                     <p>(152-716) 서울특별시 구로구 연동로 320
                         <br>Tel 02)2610-4808 &nbsp; &nbsp; &nbsp; Fax 02)2610-4737
-                        <br>Copyright(c) SUNGKONGHOE University. All Right Reserved.</p>
+                        <br>Copyright(c) SUNGKONGHOE University. All Right Reserved.
+                        <br> * 관리자 / 010-5032-9325 / team.kimkongko@gmail.com</p>
                 </div>
                 <div class="col-sm-6">
                     <div class="row">

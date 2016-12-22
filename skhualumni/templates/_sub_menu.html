@@ -6,8 +6,8 @@
 <div class="tab2">
     <ul class="nav navbar-nav navbar-collapse">
         <li><a href="{% url 'info:greeting' %}">인 사 말</a></li>
-        <li><a href="{% url 'info:business' %}">사업소개</a></li>
-        <li><a href="{% url 'info:organization' %}">조직소개</a></li>
+        <li><a href="{% url 'info:business' %}">사업안내</a></li>
+        <li><a href="{% url 'info:organization' %}">조직안내</a></li>
         <li><a href="{% url 'info:map' %}">오시는길</a></li>
         <li><a href="{% url 'info:usage' %}">이용안내</a></li>
     </ul>
@@ -16,16 +16,16 @@
 {% elif "/board/" in request.path %}
     <div class="tab2">
         <ul class="nav navbar-nav navbar-collapse">
-            <li><a href="{% url 'board:index' %}">자유게시판</a></li>
             <li><a href="{% url 'notice:index' %}">공지사항</a></li>
+            <li><a href="{% url 'board:index' %}">자유게시판</a></li>
         </ul>
     </div>
 
 {% elif "/notice/" in request.path %}
     <div class="tab2">
         <ul class="nav navbar-nav navbar-collapse">
-            <li><a href="{% url 'board:index' %}">자유게시판</a></li>
             <li><a href="{% url 'notice:index' %}">공지사항</a></li>
+            <li><a href="{% url 'board:index' %}">자유게시판</a></li>
         </ul>
     </div>
 

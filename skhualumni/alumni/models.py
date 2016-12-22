@@ -67,6 +67,10 @@ class User(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = 'login_id'
     REQUIRED_FIELDS = ['name', 'period', 'email']
 
+    class Meta:
+        verbose_name = "사용자"
+        verbose_name_plural = "사용자"
+
     def get_full_name(self):
         # The user is identified by their email address
         return self.name
