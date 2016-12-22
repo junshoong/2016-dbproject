@@ -33,8 +33,7 @@ def render_map(request):
 
 
 def render_usage(request):
-    usage = Info.objects.filter(category='USE')
-    usage = usage.first()
-    context = {'obj': usage}
+    usage = Info.objects.filter(category='USE').reverse()
+    context = {'obj_list': usage}
     return render(request, 'info/usage.html', context)
 
