@@ -39,8 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Added apps
     'alumni.apps.AlumniConfig',
-    'board',
-    'notice',
+    'board.apps.BoardConfig',
+    'notice.apps.NoticeConfig',
     'info.apps.InfoConfig',
     'import_export',
 ]
