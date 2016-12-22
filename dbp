@@ -2,6 +2,7 @@ server {
         charset utf-8;
         listen 80;
         server_name dbp.harveyk.me;
+        client_max_body_size 5M;
 
         location = /favicon.ico { access_log off; log_not_found off; }
 
