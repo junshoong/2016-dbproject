@@ -14,6 +14,10 @@ class Post(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        verbose_name_plural = "게시글"
+        verbose_name = "게시글"
+
     def __str__(self):
         return self.title
 
@@ -31,3 +35,7 @@ class Comment(models.Model):
     message = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name_plural = "댓글"
+        verbose_name = "댓글"
