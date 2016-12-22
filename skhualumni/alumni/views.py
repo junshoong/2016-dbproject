@@ -15,7 +15,8 @@ class UserSearchMixin(object):
             q1 = queryset.filter(name__icontains=q)
             q2 = queryset.filter(login_id__icontains=q)
             q2 = q2.exclude(open_login_id=False)
-            queryset = q1 | q2
+            q3 = queryset.filter(period=q)
+            queryset = q1 | q2 | q3
         return queryset
 
 
