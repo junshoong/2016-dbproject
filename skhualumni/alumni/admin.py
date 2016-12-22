@@ -4,17 +4,34 @@ from django.contrib.auth.models import Group
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from import_export import resources
+from import_export import fields
 from import_export.admin import ImportExportMixin
 
 from alumni.models import User
 
 
 class UserResource(resources.ModelResource):
+    id = fields.Field(attribute='id', column_name='연번')
+    period = fields.Field(attribute='period', column_name='기수')
+    picture = fields.Field(attribute='picture', column_name='사진')
+    name = fields.Field(attribute='name', column_name='성명')
+    work = fields.Field(attribute='work', column_name='소속')
+    work_position = fields.Field(attribute='work_position', column_name='지위')
+    login_id = fields.Field(attribute='login_id', column_name='핸드폰')
+    work_phone = fields.Field(attribute='work_phone', column_name='직장전화')
+    email = fields.Field(attribute='email', column_name='이메일')
+    work_address = fields.Field(attribute='work_address', column_name='근무지 주소', readonly=True)
 
     class Meta:
         model = User
-        skip_unchanged = True   # 바뀌지 않은 것음 skip
-        report_skipped = False  # skip된것에 대한 미리보기
+        export_order = (
+            'id', 'period', 'picture', 'name', 'work', 'work_position',
+            'login_id', 'work_phone', 'email', )
+        fields = (
+            'id', 'period', 'picture', 'name', 'work', 'work_position',
+            'login_id', 'work_phone', 'email', )
+
+        import_id_fields = ('id',)
 
 
 class UserCreationForm(forms.ModelForm):
@@ -79,8 +96,5 @@ class UserAdmin(ImportExportMixin, BaseUserAdmin):
     ordering = ('period',)
     filter_horizontal = ()
 
-# Now register the new UserAdmin...
 admin.site.register(User, UserAdmin)
-# ... and, since we're not using Django's built-in permissions,
-# unregister the Group model from admin.
 admin.site.unregister(Group)

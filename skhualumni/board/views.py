@@ -6,11 +6,10 @@ from .forms import CommentForm, PostEditForm, PostSearchForm
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-rows_per_page = 2
 
 @login_required
 def index(request):
-    post_list = Post.objects.all()
+    post_list = Post.objects.order_by('-id')
 
     paginator = Paginator(post_list, 10)
 
