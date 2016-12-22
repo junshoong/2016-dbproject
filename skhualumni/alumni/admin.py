@@ -69,7 +69,8 @@ class UserChangeForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('login_id', 'password', 'name', 'is_active', 'is_admin')
+        fields = ('login_id', 'password', 'name', 'is_active', 'is_admin',
+                  'position', 'position_all', )
 
     def clean_password(self):
         return self.initial["password"]
@@ -83,8 +84,10 @@ class UserAdmin(ImportExportMixin, BaseUserAdmin):
     list_display = ('login_id', 'name', 'email')
     list_filter = ('is_admin',)
     fieldsets = (
-        (None, {'fields': ('login_id', 'password', 'name', 'period', 'email')}),
-    )
+        (None, {'fields': (
+            'login_id', 'password', 'name', 'period',
+            'email', 'position', 'position_all', )
+        }),)
 
     add_fieldsets = (
         (None, {
