@@ -10,4 +10,5 @@ urlpatterns = [
     url(r'^post/(?P<pk>[0-9]+)/delete/$', post_delete, name='post_delete'),  #글 삭제
     url(r'^(?P<pk>\d+)/comments/new/$', comment_new, name='comment_new'),    #댓글 작성
     url(r'^(?P<post_pk>\d+)/comments/(?P<pk>\d+)/edit/$', comment_edit, name='comment_edit'),     #댓글 수정
+    url(r'^(?P<post_pk>\d+)/comments/(?P<pk>\d+)/delete/$', comment_delete, name='comment_delete'),  # 댓글 삭제
 ]

@@ -80,7 +80,7 @@ def post_new(request):
         form = PostEditForm(request.POST, request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
-            post.author = request.user
+            post.writer = request.user
             post.save()
             return redirect('notice:post_detail', pk=post.pk)
     else:
@@ -95,6 +95,7 @@ def comment_new(request, pk):
         form = CommentForm(request.POST)
         if form.is_valid():
             comment = form.save(commit=False)
+            comment.author = request.user
             comment.post = Post.objects.get(pk=pk)
             comment.save()
             return redirect('notice:post_detail', pk)
@@ -117,4 +118,11 @@ def comment_edit(request, post_pk, pk):
     else:
         form = CommentForm(instance=comment)
     return render(request, 'notice/post_form.html', {'form': form, })
+
+@login_required
+def comment_delete(request, post_pk, pk):
+    comment = Comment.objects.get(pk=pk)
+    comment.delete()
+
+    return redirect('notice:post_detail', post_pk)
 
