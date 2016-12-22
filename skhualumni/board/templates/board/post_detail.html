@@ -40,42 +40,18 @@
             <a class="btn btn-default" href="{% url "board:index" %}">목록으로</a>
             <a class="btn btn-default" href="{% url "board:post_edit" post.pk %}">수정</a>
             <a class="btn btn-default" href="{% url "board:post_delete" post.pk %}">삭제</a>
-            {#                <form name="" action="method">#}
-            {#                    <fieldset>#}
-            {#                        <legend>댓글</legend>#}
-            {#                        <table cellspacing="0" border="1" summary="글 내용에 대한 덧글 표시" class="tbl_type2">#}
-            {#                            <caption>글에대한 댓글</caption>#}
-            {#                            <colgroup>#}
-            {#                                <col width="110">#}
-            {#                                <col>#}
-            {#                            </colgroup>#}
-            {#                            <tbody>#}
-            {#                            <tr class="input_txt">#}
-            {#                                <td><input type="text" title="이름" name="" value="" class="name"></td>#}
-            {#                                <td><textarea cols="65" rows="5" name="" class="comment"></textarea>#}
-            {#                                    <input type="submit" title="입력" value="입력" class="submit">#}
-            {#                                <td><a href="{% url "board:comment_new" post.pk %}">댓글 작성</a></td>#}
-            {#                                </td>#}
-            {#                            </tr>#}
-
-
             <table>
-                {#                            <tr>#}
                 {% for comment in post.comment_set.all %}
                     <tr>
                         <td> {{ comment.author }}  | </td>
                         <td> {{ comment.message }}  | </td>
                         <td> {{ comment.created_at }} </td>
                         <td> <a class="btn btn-default" href="{% url "board:comment_edit" post.pk comment.pk %}" >수정</a> </td>
+                        <td> <a class="btn btn-default" href="{% url "board:comment_delete" post.pk comment.pk %}" >삭제</a> </td>
                     </tr>
                 {% endfor %}
             </table>
             <a class="btn btn-default" href="{% url "board:comment_new" post.pk %}">댓글 작성</a>
-            {#                            </tr>#}
-            {#                            </tbody>#}
-            {#                        </table>#}
-            {#                    </fieldset>#}
-            {#                </form>#}
         </div>
     </div>
 
