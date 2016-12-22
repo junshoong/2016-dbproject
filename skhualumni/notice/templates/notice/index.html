@@ -48,24 +48,26 @@
                                 </tbody>
                             </table>
                             <center>
-                                <ul class="pagination" style="position:center">
+                                <div class="col-md-12">
+                                    <ul class="pager" style="position:center">
                                     <span class="step-links">
                                         {% if post_list.has_previous %}
-                                            <a href="?page={{ post_list.previous_page_number }}">previous</a>
+                                            <a class="btn btn-primary" href="?page={{ post_list.previous_page_number }}">이전</a>
                                         {% endif %}
 
-                                    <span class="current">
+                                        <span class="current">
                                             Page <a href="?page={{ post_list.number }}">{{ post_list.number }}</a> of
                                         <a href="?page={{ post_list.paginator.num_pages }}">{{ post_list.paginator.num_pages }}</a>
                                     </span>
 
                                     <a href="?page=">{{ post_list.Paginator.count }}</a>
                                         {% if post_list.has_next %}
-                                            <a href="?page={{ post_list.next_page_number }}">next</a>
+                                            <a class="btn btn-primary" href="?page={{ post_list.next_page_number }}">다음</a>
                                         {% endif %}
                                     </span>
 
-                                </ul>
+                                    </ul>
+                                </div>
                                 <ul style="float:right">
                                     <a class="btn btn-lg btn-primary" href="{% url 'notice:post_new' %}">글쓰기</a>
                                 </ul>

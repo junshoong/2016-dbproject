@@ -3,79 +3,78 @@
 {% block title %}자유게시판{% endblock %}
 
 {% block content %}
-<div id="content">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-
-                <content>
-                <h1>자유게시판</h1>
-                    <div class="section">
-                        <div class="container">
-                            <table cellspacing="0" border="1" summary="게시판의 글제목 리스트" class="tbl_type">
-                                <caption>자유 게시판</caption>
-                                <colgroup>
-                                    <col width="80">
-                                    <col>
-                                    <col width="115">
-                                    <col width="85">
-                                    <col width="60">
-                                </colgroup>
-                                <thead>
-                                <tr>
-                                    <th scope="col">No</th>
-                                    <th scope="col">제목</th>
-                                    <th scope="col">작성자</th>
-                                    <th scope="col">작성일</th>
-                                    <th scope="col">조회수</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                {% for post in post_list %}
+    <div id="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <content>
+                        <h1>자유게시판</h1>
+                        <div class="section">
+                            <div class="container">
+                                <table cellspacing="0" border="1" summary="게시판의 글제목 리스트" class="tbl_type">
+                                    <caption>자유 게시판</caption>
+                                    <colgroup>
+                                        <col width="80">
+                                        <col>
+                                        <col width="115">
+                                        <col width="85">
+                                        <col width="60">
+                                    </colgroup>
+                                    <thead>
                                     <tr>
-                                        <td class="num">{{ post.pk }}</td>
-                                        <td class="title">
-                                            <a href="{% url "board:post_detail" post.pk %}">{{ post.title }}</a>
-                                        </td>
-                                        <td>
-                                            {{ post.writer }}
-                                        </td>
-                                        <td class="date">{{ post.created_at }}</td>
-                                        <td class="hit">아직 구현 안함</td>
+                                        <th scope="col">No</th>
+                                        <th scope="col">제목</th>
+                                        <th scope="col">작성자</th>
+                                        <th scope="col">작성일</th>
+                                        <th scope="col">조회수</th>
                                     </tr>
-                                {% endfor %}
+                                    </thead>
+                                    <tbody>
+                                    {% for post in post_list %}
+                                        <tr>
+                                            <td class="num">{{ post.pk }}</td>
+                                            <td class="title">
+                                                <a href="{% url "board:post_detail" post.pk %}">{{ post.title }}</a>
+                                            </td>
+                                            <td>
+                                                {{ post.writer }}
+                                            </td>
+                                            <td class="date">{{ post.created_at }}</td>
+                                            <td class="hit">아직 구현 안함</td>
+                                        </tr>
+                                    {% endfor %}
 
-                                </tbody>
-                            </table>
-                            <center>
-                                <ul class="pagination" style="position:center">
+                                    </tbody>
+                                </table>
+                                <div class="col-md-12">
+                                    <ul class="pager" style="position:center">
                                     <span class="step-links">
                                         {% if post_list.has_previous %}
-                                            <a href="?page={{ post_list.previous_page_number }}">previous</a>
+                                            <a class="btn btn-primary" href="?page={{ post_list.previous_page_number }}">이전</a>
                                         {% endif %}
 
-                                    <span class="current">
+                                        <span class="current">
                                             Page <a href="?page={{ post_list.number }}">{{ post_list.number }}</a> of
                                         <a href="?page={{ post_list.paginator.num_pages }}">{{ post_list.paginator.num_pages }}</a>
                                     </span>
 
                                     <a href="?page=">{{ post_list.Paginator.count }}</a>
                                         {% if post_list.has_next %}
-                                            <a href="?page={{ post_list.next_page_number }}">next</a>
+                                            <a class="btn btn-primary" href="?page={{ post_list.next_page_number }}">다음</a>
                                         {% endif %}
                                     </span>
 
-                                </ul>
-                                <ul style="float:right">
-                                    <a class="btn btn-lg btn-primary" href="{% url 'board:post_new' %}">글쓰기</a>
-                                </ul>
-                            </center>
+                                    </ul>
+                                </div>
+                                    <ul style="float:right">
+                                        <a class="btn btn-lg btn-primary" href="{% url 'board:post_new' %}">글쓰기</a>
+                                    </ul>
+                            </div>
                         </div>
-                    </div>
-                </content>
+                    </content>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 {% endblock %}
