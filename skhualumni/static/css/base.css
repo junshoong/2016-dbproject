@@ -4,6 +4,7 @@ div#header {
     background-color:#80b195;
 }
 
+
 .maintitile {
     width:360px;
     height:180px;
@@ -79,3 +80,20 @@ legend{display:none}
 .tab2 ul li.on,.tab2 ul li.on a{background-image:url(http://static.naver.com/groupware/2010/bg_tab2_on.gif)}
 .tab2 ul li.on a{color:#3376b8}
 
+.section-primary {
+    background-color: #666666 !important;
+}
+
+.btn-primary {
+    background-color: #666666;
+    border-color: #666666;
+}
+
+.btn-primary a {
+    color:#FFFFFF;
+}
+
+.btn-primary:hover {
+    background-color:#333333;
+    border-color: #666666;
+}
