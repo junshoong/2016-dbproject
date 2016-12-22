@@ -103,7 +103,6 @@ $ ./manage.py migrate
 ```bash
 apt install docker.io git
 git clone https://gitlab.com/vaporize93/2016_db_project
-cd 2016_db_project
 
 docker pull mysql
 docker run --name db -e MYSQL_ROOT_PASSWORD=qq1234 -d mysql
@@ -113,6 +112,7 @@ docker exec -it db bash
 > exit;
 # exit
 
+cd 2016_db_project
 docker build -t harvey/dbp .
 docker run --name=skhudbp \
     --publish=80:80 \
@@ -120,6 +120,8 @@ docker run --name=skhudbp \
     --env="DJANGO_SETTINGS_MODULE=skhualumni.production_settings" \
     --env="MYSQL_ROOT_PASSWORD=qq1234" \
     --env="PYTHONIOENCODING=UTF-8" \
+    --volume=/home/ubuntu/media:/srv/dbp/skhualumni/media/ \
+    --volume=/home/ubuntu/logs:/srv/logs/ \
     -d harvey/dbp
 
 docker exec -it skhudbp bash
