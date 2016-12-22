@@ -22,7 +22,8 @@ class Info(models.Model):
     modified_date = models.DateTimeField(auto_now=True)
 
     class Meta:
-        verbose_name = 'info'
+        verbose_name = '기관소개글'
+        verbose_name_plural = '기관소개글'
         db_table = 'other_board'
         ordering = ('-modified_date',)
 

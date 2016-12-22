@@ -25,7 +25,6 @@ class UserUpdateView(LoginRequiredMixin, UpdateView):
         'open_login_id',
         'email',
         'open_email',
-        'position',
         'work',
         'open_work',
         'work_position',
