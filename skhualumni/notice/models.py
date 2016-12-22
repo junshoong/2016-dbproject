@@ -1,14 +1,15 @@
 from django.db import models
 from django.core.urlresolvers import reverse
-from alumni.models import User
 from django.conf import settings
 
 
 class Post(models.Model):
     title = models.CharField(max_length=50)
-    nt_writer = models.CharField(max_length=10,null=True)
-    #writer = models.ForeignKey(settings.AUTH_USER_MODEL)
-    # nt_writer = models.ForeignKey(settings.AUTH_USER_MODEL)
+    writer = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='+',
+    )
     content = models.TextField(max_length=10000)
     photo = models.ImageField(blank=True, null=True, upload_to='NoticeBoard/%Y/%m/%d')
     created_at = models.DateTimeField(auto_now_add=True)
@@ -31,7 +32,11 @@ class Post(models.Model):
 
 class Comment(models.Model):
     post = models.ForeignKey(Post)
-    nt_author = models.CharField(max_length=10)
+    author = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='+',
+    )
     message = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
