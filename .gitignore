@@ -11,3 +11,6 @@ media/
 
 #Mac
 .DS_Store
+
+#test
+geckodriver.log
